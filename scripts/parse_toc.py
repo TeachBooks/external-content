@@ -16,7 +16,7 @@ import yaml
 
 
 DEFAULT_IN_TOC_FILE = "_toc.yml"
-DEFAULT_OUT_TOC_FILE = "_toc.external.yml"
+DEFAULT_OUT_TOC_FILE = "_toc.local.yml"
 DEFAULT_EXTERNAL_PATH = "external"
 
 
