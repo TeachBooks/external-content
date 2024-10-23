@@ -8,3 +8,6 @@ parts:
       sections:
       - file: some_content/text_and_code.ipynb
     - file: references.md
+    - github: https://github.com/EXCITED-CO2/workshop_tutorial/blob/v1.0.0/book/ARCO-ERA5.ipynb
+    - gitlab: https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/intro.md
+
