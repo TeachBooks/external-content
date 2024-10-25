@@ -158,6 +158,9 @@ def external_to_local(
     branch_tag_name = get_branch_tag_name(external_url)
     content_dir = create_content_dir_name(external_url, root_dir=external_path)
 
+    if os.path.isdir(content_dir):
+        raise FileExistsError(f"{content_dir} already exists!")
+
     # clone with branch_name
     subprocess.run([
         "git", "clone", "--single-branch", "-b",  branch_tag_name, clone_url,
