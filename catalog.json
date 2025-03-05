@@ -1,7 +1,7 @@
 [
   {
     "title": "TeachBooks Manual",
-    "logo": "https://github.com/TeachBooks/manual/raw/refs/tags/v1.1.1/images/TeachBooks_logo.svg",
+    "logo": "https://github.com/TeachBooks/manual/raw/refs/tags/v1.1.1/book/images/TeachBooks_logo.svg",
     "author": "TeachBooks Team, built with <a href=\"https://teachbooks.io/\">TeachBooks</a> and <a href=\"https://jupyterbook.org/\">Jupyter Book</a>, <a href=\"https://creativecommons.org/licenses/by/4.0/\" target=\"_blank\" rel=\"license noopener noreferrer\"\">CC BY 4.0<img style=\"height:22px!important;margin-left:3px;vertical-align:text-bottom;\" src=\"https://mirrors.creativecommons.org/presskit/icons/cc.svg\" alt=\"\"><img style=\"height:22px!important;margin-left:3px;vertical-align:text-bottom;\" src=\"https://mirrors.creativecommons.org/presskit/icons/by.svg\" alt=\"\"></a>",
     "html_url": "https://teachbooks.io/manual/intro.html",
     "code_url": "https://github.com/TeachBooks/manual",
@@ -17,25 +17,25 @@
               "title": "What is a TeachBook?",
               "children": [],
               "html_url": "https://teachbooks.io/manual/intro/book.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/intro/book.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/intro/book.md"
             },
             {
               "title": "How can you do it?",
               "children": [],
               "html_url": "https://teachbooks.io/manual/intro/workflow.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/intro/workflow.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/intro/workflow.md"
             },
             {
               "title": "It only takes 10 clicks!",
               "children": [],
               "html_url": "https://teachbooks.io/manual/intro/template.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/intro/template.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/intro/template.md"
             },
             {
               "title": "You Know the Basics: What Next?",
               "children": [],
               "html_url": "https://teachbooks.io/manual/intro/next.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/intro/next.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/intro/next.md"
             }
           ],
           "html_url": null,
@@ -48,13 +48,13 @@
               "title": "User types",
               "children": [],
               "html_url": "https://teachbooks.io/manual/installation-and-setup/user_types.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/installation-and-setup/user_types.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/installation-and-setup/user_types.md"
             },
             {
               "title": "Collaboration tool: Git",
               "children": [],
               "html_url": "https://teachbooks.io/manual/installation-and-setup/git.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/installation-and-setup/git.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/installation-and-setup/git.md"
             },
             {
               "title": "Install & authenticate required software",
@@ -63,35 +63,35 @@
                   "title": "Editing text: VS Code",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/installation-and-setup/vscode-setup.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/installation-and-setup/vscode-setup.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/installation-and-setup/vscode-setup.md"
                 },
                 {
                   "title": "Git: GitHub Desktop / Git in VS Code",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/installation-and-setup/git-setup_local.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/installation-and-setup/git-setup_local.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/installation-and-setup/git-setup_local.md"
                 },
                 {
                   "title": "Managing code-related software: Anaconda",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/installation-and-setup/anaconda.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/installation-and-setup/anaconda.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/installation-and-setup/anaconda.md"
                 },
                 {
                   "title": "Combining Git Bash, VS Code and Conda",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/installation-and-setup/git_bash_conda_vs-code.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/installation-and-setup/git_bash_conda_vs-code.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/installation-and-setup/git_bash_conda_vs-code.md"
                 },
                 {
                   "title": "Build your book: JupyterBook",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/installation-and-setup/jupyter-book-setup.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/installation-and-setup/jupyter-book-setup.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/installation-and-setup/jupyter-book-setup.md"
                 }
               ],
               "html_url": "https://teachbooks.io/manual/installation-and-setup/overview.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/installation-and-setup/overview.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/installation-and-setup/overview.md"
             },
             {
               "title": "Collaborative book-editing",
@@ -100,47 +100,47 @@
                   "title": "Assign task to yourself (milestones, issues)",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/workflows/milestones_issues.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/workflows/milestones_issues.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/workflows/milestones_issues.md"
                 },
                 {
                   "title": "Create your own version (branching, cloning, pulling)",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/workflows/branches.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/workflows/branches.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/workflows/branches.md"
                 },
                 {
                   "title": "Edit (merge conflicts, staging, committing, pushing)",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/workflows/edit_book.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/workflows/edit_book.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/workflows/edit_book.md"
                 },
                 {
                   "title": "Check changes online",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/workflows/check_changes_online.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/workflows/check_changes_online.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/workflows/check_changes_online.md"
                 },
                 {
                   "title": "Reviewing and combine versions (merge/pull request, merging)",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/workflows/merge_request.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/workflows/merge_request.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/workflows/merge_request.md"
                 }
               ],
               "html_url": "https://teachbooks.io/manual/workflows/collaboration.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/workflows/collaboration.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/workflows/collaboration.md"
             },
             {
               "title": "Organize editing team, collaboration and visibility",
               "children": [],
               "html_url": "https://teachbooks.io/manual/installation-and-setup/collab.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/installation-and-setup/collab"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/installation-and-setup/collab.md"
             },
             {
               "title": "Which git provider to choose",
               "children": [],
               "html_url": "https://teachbooks.io/manual/installation-and-setup/tools.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/installation-and-setup/tools"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/installation-and-setup/tools.md"
             },
             {
               "title": "Copyright and Licenses checklist",
@@ -149,23 +149,23 @@
                   "title": "Copyright Considerations",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/installation-and-setup/copyright/considerations.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/installation-and-setup/copyright/considerations"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/installation-and-setup/copyright/considerations.md"
                 },
                 {
                   "title": "Licenses",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/installation-and-setup/copyright/licenses.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/installation-and-setup/copyright/licenses"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/installation-and-setup/copyright/licenses.md"
                 },
                 {
                   "title": "Recommendations",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/installation-and-setup/copyright/recommendations.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/installation-and-setup/copyright/recommendations"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/installation-and-setup/copyright/recommendations.md"
                 }
               ],
               "html_url": "https://teachbooks.io/manual/installation-and-setup/copyright.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/installation-and-setup/copyright.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/installation-and-setup/copyright.md"
             }
           ],
           "html_url": null,
@@ -178,7 +178,7 @@
               "title": "Overview",
               "children": [],
               "html_url": "https://teachbooks.io/manual/features/overview.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/features/overview.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/features/overview.md"
             },
             {
               "title": "Original Jupyter Book and Sphinx Features",
@@ -187,59 +187,59 @@
                   "title": "Anatomy of a Jupyter Book",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/basic-features/jupyterbook.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/basic-features/jupyterbook.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/basic-features/jupyterbook.md"
                 },
                 {
                   "title": "Figures",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/basic-features/figures.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/basic-features/figures.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/basic-features/figures.md"
                 },
                 {
                   "title": "Equations",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/basic-features/equations.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/basic-features/equations.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/basic-features/equations.md"
                 },
                 {
                   "title": "Videos",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/basic-features/videos.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/basic-features/videos.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/basic-features/videos.md"
                 },
                 {
                   "title": "References",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/basic-features/References.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/basic-features/References.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/basic-features/References.md"
                 },
                 {
                   "title": "Code",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/basic-features/code.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/basic-features/code.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/basic-features/code.md"
                 },
                 {
                   "title": "Code blocks that produce figures",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/basic-features/Code_block_figures.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/basic-features/Code_block_figures"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/basic-features/Code_block_figures.md"
                 },
                 {
                   "title": "Badges, Buttons & Icons",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/basic-features/badges.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/basic-features/badges.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/basic-features/badges.md"
                 },
                 {
                   "title": "Banner or Announcement",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/basic-features/banner.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/basic-features/banner"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/basic-features/banner.md"
                 }
               ],
               "html_url": "https://teachbooks.io/manual/basic-features/overview.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/basic-features/overview.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/basic-features/overview.md"
             },
             {
               "title": "Easy Editing Process",
@@ -248,41 +248,41 @@
                   "title": "TeachBooks template",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/external/template/README.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/template/README.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/external/template/README.md"
                 },
                 {
                   "title": "Draft-Release Workflow",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/features/teachbooks.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/features/teachbooks"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/features/teachbooks.md"
                 },
                 {
                   "title": "Releasing book online",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/external/deploy-book-workflow/README.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/deploy-book-workflow/README.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/external/deploy-book-workflow/README.md"
                 },
                 {
                   "title": "Local Server to view interactive elements locally",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/features/local_server.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/features/local_server"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/features/local_server.md"
                 },
                 {
                   "title": "Share content between books using submodules",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/external/Nested-Books/README.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/Nested-Books/README.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/external/Nested-Books/README.md"
                 },
                 {
                   "title": "Auto-updating packages",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/features/update_env.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/features/update_env"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/features/update_env.md"
                 }
               ],
               "html_url": "https://teachbooks.io/manual/features/easy-editing.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/features/easy-editing.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/features/easy-editing.md"
             },
             {
               "title": "Additional functionality",
@@ -291,37 +291,37 @@
                   "title": "Download link replacer",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/external/Download-Link-Replacer/README.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/Download-Link-Replacer/README.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/external/Download-Link-Replacer/README.md"
                 },
                 {
                   "title": "Multilingual book",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/external/Sphinx-launch-buttons/README.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/Sphinx-launch-buttons/README.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/external/Sphinx-launch-buttons/README.md"
                 },
                 {
                   "title": "Discussions in your book: Utterances",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/basic-features/utterances.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/basic-features/utterances.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/basic-features/utterances.md"
                 },
                 {
                   "title": "Grasple",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/external/Sphinx-Grasple-public/README.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/Sphinx-Grasple-public/README.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/external/Sphinx-Grasple-public/README.md"
                 },
                 {
                   "title": "H5p interactive elements",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/features/h5p.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/features/h5p.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/features/h5p.md"
                 },
                 {
                   "title": "Interactive HTML/JavaScript elements",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/features/HTML_javascript.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/features/HTML_javascript.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/features/HTML_javascript.md"
                 },
                 {
                   "title": "Interactive content: Run Python inside your book",
@@ -330,21 +330,21 @@
                       "title": "Ipywidgets",
                       "children": [],
                       "html_url": "https://teachbooks.io/manual/features/widgets.html",
-                      "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/features/widgets.ipynb"
+                      "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/features/widgets.ipynb"
                     },
                     {
                       "title": "Exercise checking using check-answer button",
                       "children": [],
                       "html_url": "https://teachbooks.io/manual/features/exercise_checking.html",
-                      "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/features/exercise_checking.ipynb"
+                      "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/features/exercise_checking.ipynb"
                     }
                   ],
                   "html_url": "https://teachbooks.io/manual/features/live_code.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/features/live_code"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/features/live_code.md"
                 }
               ],
               "html_url": "https://teachbooks.io/manual/features/sphinx_extensions.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/features/sphinx_extensions.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/features/sphinx_extensions.md"
             },
             {
               "title": "Book styling",
@@ -353,41 +353,35 @@
                   "title": "Image Inverter",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/external/Sphinx-Image-Inverter/README.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/Sphinx-Image-Inverter/README.md"
-                },
-                {
-                  "title": "JupyterBook-Patches",
-                  "children": [],
-                  "html_url": "https://teachbooks.io/manual/external/JupyterBook-Patches/README.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/JupyterBook-Patches/README.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/external/Sphinx-Image-Inverter/README.md"
                 },
                 {
                   "title": "TU Delft theme",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/external/Sphinx-TUDelft-theme/README.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/Sphinx-TUDelft-theme/README.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/external/Sphinx-TUDelft-theme/README.md"
                 },
                 {
                   "title": "Rich hover over tips",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/external/teachbooks-sphinx-tippy/README.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/teachbooks-sphinx-tippy/README.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/external/teachbooks-sphinx-tippy/README.md"
                 },
                 {
                   "title": "APA References",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/features/apa.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/features/apa"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/features/apa.md"
                 },
                 {
                   "title": "Custom named colors",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/external/Sphinx-Named-Colors/README.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/Sphinx-Named-Colors/README.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/external/Sphinx-Named-Colors/README.md"
                 }
               ],
               "html_url": "https://teachbooks.io/manual/features/visuals.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/features/visuals.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/features/visuals.md"
             },
             {
               "title": "TeachBooks Student-view Features",
@@ -396,17 +390,17 @@
                   "title": "Local Annotator Extension",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/external/annotater/README.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/annotater/README.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/external/annotater/README.md"
                 },
                 {
                   "title": "Making comments on the website: Hypothesis",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/basic-features/hypothesis.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/basic-features/hypothesis.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/basic-features/hypothesis.md"
                 }
               ],
               "html_url": "https://teachbooks.io/manual/features/students.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/features/students"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/features/students.md"
             }
           ],
           "html_url": null,
@@ -419,55 +413,55 @@
               "title": "TeachBooks Examples",
               "children": [],
               "html_url": "https://teachbooks.io/manual/examples/overview.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/examples/overview.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/examples/overview.md"
             },
             {
               "title": "Well-Structured Book",
               "children": [],
               "html_url": "https://teachbooks.io/manual/examples/book_structure.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/examples/book_structure.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/examples/book_structure.md"
             },
             {
               "title": "Types of H5p Quizzes",
               "children": [],
               "html_url": "https://teachbooks.io/manual/examples/h5p_examples.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/examples/h5p_examples.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/examples/h5p_examples.md"
             },
             {
               "title": "Live Code (Sphinx Thebe)",
               "children": [],
               "html_url": "https://teachbooks.io/manual/examples/live_code.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/examples/live_code.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/examples/live_code.md"
             },
             {
               "title": "Programming assignment",
               "children": [],
               "html_url": "https://teachbooks.io/manual/examples/example_gumbel.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/examples/example_gumbel.ipynb"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/examples/example_gumbel.ipynb"
             },
             {
               "title": "Combining theory & interactive quizzes",
               "children": [],
               "html_url": "https://teachbooks.io/manual/examples/theory_questions.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/examples/theory_questions.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/examples/theory_questions.md"
             },
             {
               "title": "Theory, interactive quizzes & live code",
               "children": [],
               "html_url": "https://teachbooks.io/manual/examples/example_quiz_interactive.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/examples/example_quiz_interactive.ipynb"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/examples/example_quiz_interactive.ipynb"
             },
             {
               "title": "Coding theory, interactive quizzes & live code",
               "children": [],
               "html_url": "https://teachbooks.io/manual/examples/coding_theory_widgets.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/examples/coding_theory_widgets.ipynb"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/examples/coding_theory_widgets.ipynb"
             },
             {
               "title": "Parametric questions",
               "children": [],
               "html_url": "https://teachbooks.io/manual/examples/parametric_questions.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/examples/parametric_questions.ipynb"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/examples/parametric_questions.ipynb"
             }
           ],
           "html_url": null,
@@ -480,7 +474,7 @@
               "title": "Figure syntax maker",
               "children": [],
               "html_url": "https://teachbooks.io/manual/tools/figmaker.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/tools/figmaker"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/tools/figmaker.md"
             },
             {
               "title": "Scripts for automating workflow",
@@ -489,29 +483,29 @@
                   "title": "Convert LaTeX to Markdown",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/helper_code/converter.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/helper_code/converter.md"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/helper_code/converter.md"
                 },
                 {
                   "title": "Snippit",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/external/Useful_python_code/snippit.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/Useful_python_code/snippit.ipynb"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/external/Useful_python_code/snippit.ipynb"
                 },
                 {
                   "title": "Extensionchecker, filedownloader and figreturner",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/external/Useful_python_code/extensionfildownloadreturn.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/Useful_python_code/extensionfildownloadreturn.ipynb"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/external/Useful_python_code/extensionfildownloadreturn.ipynb"
                 },
                 {
                   "title": "Figshrinker",
                   "children": [],
                   "html_url": "https://teachbooks.io/manual/external/Useful_python_code/figshrinker.html",
-                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/external/Useful_python_code/figshrinker.ipynb"
+                  "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/external/Useful_python_code/figshrinker.ipynb"
                 }
               ],
               "html_url": "https://teachbooks.io/manual/helper_code/intro.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/helper_code/intro.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/helper_code/intro.md"
             }
           ],
           "html_url": null,
@@ -524,25 +518,25 @@
               "title": "References",
               "children": [],
               "html_url": "https://teachbooks.io/manual/references.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/references.md"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/references.md"
             },
             {
               "title": "Credits and License",
               "children": [],
               "html_url": "https://teachbooks.io/manual/credits.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/credits"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/credits.md"
             },
             {
               "title": "Changelog",
               "children": [],
               "html_url": "https://teachbooks.io/manual/changelog.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/changelog"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/changelog.md"
             },
             {
               "title": "Contact",
               "children": [],
               "html_url": "https://teachbooks.io/manual/contact.html",
-              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/contact"
+              "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/contact.md"
             }
           ],
           "html_url": null,
@@ -550,7 +544,7 @@
         }
       ],
       "html_url": "https://teachbooks.io/manual/intro.html",
-      "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/intro"
+      "external_url": "https://github.com/TeachBooks/manual/blob/v1.1.1/book/book/intro.md"
     }
   },
   {
@@ -574,17 +568,17 @@
                   "title": "One Random Variable",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#prob-design/01-one-random-variable.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/prob-design/01-one-random-variable.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/prob-design/01-one-random-variable.md"
                 },
                 {
                   "title": "Two Random Variables",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#prob-design/02-two-random-variables.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/prob-design/02-two-random-variables.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/prob-design/02-two-random-variables.md"
                 }
               ],
               "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#prob-design/overview.html",
-              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/prob-design/overview.md"
+              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/prob-design/overview.md"
             },
             {
               "title": "Risk Analysis",
@@ -593,23 +587,23 @@
                   "title": "Definition of Risk",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#risk-analysis/definition.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/risk-analysis/definition.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/risk-analysis/definition.md"
                 },
                 {
                   "title": "Steps in a Risk Analysis",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#risk-analysis/steps.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/risk-analysis/steps.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/risk-analysis/steps.md"
                 },
                 {
                   "title": "Risk Curve",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#risk-analysis/risk-curves.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/risk-analysis/risk-curves.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/risk-analysis/risk-curves.md"
                 }
               ],
               "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#risk-analysis/overview.html",
-              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/risk-analysis/overview.md"
+              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/risk-analysis/overview.md"
             },
             {
               "title": "Component Reliability",
@@ -618,11 +612,11 @@
                   "title": "Contaminant Transport",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#reliability-component/contamination.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/reliability-component/contamination.ipynb"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/reliability-component/contamination.ipynb"
                 }
               ],
               "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#reliability-component/overview.html",
-              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/reliability-component/overview.md"
+              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/reliability-component/overview.md"
             },
             {
               "title": "System Reliability",
@@ -631,11 +625,11 @@
                   "title": "Example System",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#reliability-system/exercise-simple-city.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/reliability-system/exercise-simple-city.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/reliability-system/exercise-simple-city.md"
                 }
               ],
               "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#reliability-system/overview.html",
-              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/reliability-system/overview.md"
+              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/reliability-system/overview.md"
             },
             {
               "title": "Risk Evaluation",
@@ -644,35 +638,35 @@
                   "title": "Decision Analysis",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#risk-evaluation/decision.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/risk-evaluation/decision.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/risk-evaluation/decision.md"
                 },
                 {
                   "title": "Cost Benefit Analysis",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#risk-evaluation/cost-benefit.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/risk-evaluation/cost-benefit.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/risk-evaluation/cost-benefit.md"
                 },
                 {
                   "title": "Economic Optimization",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#risk-evaluation/econ-optimization.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/risk-evaluation/econ-optimization.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/risk-evaluation/econ-optimization.md"
                 },
                 {
                   "title": "Optimization Example",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#risk-evaluation/example-dike-height.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/risk-evaluation/example-dike-height.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/risk-evaluation/example-dike-height.md"
                 },
                 {
                   "title": "Safety Standards",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#risk-evaluation/safety-standards.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/risk-evaluation/safety-standards.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/risk-evaluation/safety-standards.md"
                 }
               ],
               "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#risk-evaluation/overview.html",
-              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/risk-evaluation/overview.md"
+              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/risk-evaluation/overview.md"
             },
             {
               "title": "Exercises",
@@ -681,41 +675,41 @@
                   "title": "FN Curve",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#exercises/exercise-fn-curve.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/exercises/exercise-fn-curve.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/exercises/exercise-fn-curve.md"
                 },
                 {
                   "title": "Paint System",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#exercises/exercise-paint.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/exercises/exercise-paint.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/exercises/exercise-paint.md"
                 },
                 {
                   "title": "Dam and River",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#exercises/exercise-dam.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/exercises/exercise-dam.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/exercises/exercise-dam.md"
                 },
                 {
                   "title": "Sample Exam Questions",
                   "children": [],
                   "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#exercises/exercise-sample-exam.html",
-                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/exercises/exercise-sample-exam.md"
+                  "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/exercises/exercise-sample-exam.md"
                 }
               ],
               "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#exercises/overview.html",
-              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/exercises/overview.md"
+              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/exercises/overview.md"
             },
             {
               "title": "References",
               "children": [],
               "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#references.html",
-              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/references.md"
+              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/references.md"
             },
             {
               "title": "Credits and License",
               "children": [],
               "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/#credits.html",
-              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/credits.md"
+              "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/credits.md"
             }
           ],
           "html_url": null,
@@ -723,7 +717,7 @@
         }
       ],
       "html_url": "https://interactivetextbooks.tudelft.nl/risk-reliability/intro.html#",
-      "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/intro.md"
+      "external_url": "https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/blob/v0.1/book/book/intro.md"
     }
   },
   {
@@ -735,7 +729,7 @@
     "release": "main",
     "toc_path": "book/_toc.yml",
     "toc": {
-      "title": "Template",
+      "title": "HOS-workbook",
       "children": [
         {
           "title": "Workshops",
@@ -747,11 +741,11 @@
                   "title": "Solution",
                   "children": [],
                   "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/01_solution.html",
-                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/01_solution.ipynb"
+                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/01_solution.ipynb"
                 }
               ],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/01.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/01.ipynb"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/01.ipynb"
             },
             {
               "title": "Workshop 02",
@@ -760,29 +754,29 @@
                   "title": "Report",
                   "children": [],
                   "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/02/report.html",
-                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/02/report.md"
+                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/02/report.md"
                 },
                 {
                   "title": "Analysis",
                   "children": [],
                   "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/02/analysis.html",
-                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/02/analysis.ipynb"
+                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/02/analysis.ipynb"
                 },
                 {
                   "title": "Feedback",
                   "children": [],
                   "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/02/feedback.html",
-                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/02/feedback.md"
+                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/02/feedback.md"
                 }
               ],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/02.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/02.md"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/02.md"
             },
             {
               "title": "Workshop 03",
               "children": [],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/03.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/03.ipynb"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/03.ipynb"
             },
             {
               "title": "Workshop 04",
@@ -791,17 +785,17 @@
                   "title": "Report",
                   "children": [],
                   "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/04/report.html",
-                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/04/report.md"
+                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/04/report.md"
                 },
                 {
                   "title": "Analysis",
                   "children": [],
                   "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/04/analysis.html",
-                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/04/analysis.ipynb"
+                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/04/analysis.ipynb"
                 }
               ],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/04.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/04.md"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/04.md"
             },
             {
               "title": "Workshop 05",
@@ -810,47 +804,47 @@
                   "title": "Report",
                   "children": [],
                   "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/05/report.html",
-                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/05/report.md"
+                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/05/report.md"
                 },
                 {
                   "title": "Analysis (Deterministic)",
                   "children": [],
                   "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/05/analysis_det.html",
-                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/05/analysis_det.ipynb"
+                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/05/analysis_det.ipynb"
                 },
                 {
                   "title": "Analysis (Reliability)",
                   "children": [],
                   "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/05/analysis_rel.html",
-                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/05/analysis_rel.ipynb"
+                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/05/analysis_rel.ipynb"
                 },
                 {
                   "title": "Feedback",
                   "children": [],
                   "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/05/feedback.html",
-                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/05/feedback.md"
+                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/05/feedback.md"
                 }
               ],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/05.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/05.md"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/05.md"
             },
             {
               "title": "Workshop 06",
               "children": [],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/06.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/06.md"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/06.md"
             },
             {
               "title": "Workshop 07",
               "children": [],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/07.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/07.md"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/07.md"
             },
             {
               "title": "Workshop 08",
               "children": [],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/workshop/08.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/workshop/08.md"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/workshop/08.md"
             }
           ],
           "html_url": null,
@@ -863,7 +857,7 @@
               "title": "Overview",
               "children": [],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/EVA/overview.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/EVA/overview"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/EVA/overview.md"
             },
             {
               "title": "Threshold & Declustering",
@@ -872,29 +866,29 @@
                   "title": "Samples: Poisson?",
                   "children": [],
                   "html_url": "https://teachbooks.io/HOS-workbook/main/2024/EVA/poisson.html",
-                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/EVA/poisson"
+                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/EVA/poisson.md"
                 },
                 {
                   "title": "Mean Residual Life",
                   "children": [],
                   "html_url": "https://teachbooks.io/HOS-workbook/main/2024/EVA/mrl.html",
-                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/EVA/mrl"
+                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/EVA/mrl.md"
                 },
                 {
                   "title": "GPD Parameter Stability",
                   "children": [],
                   "html_url": "https://teachbooks.io/HOS-workbook/main/2024/EVA/stability.html",
-                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/EVA/stability"
+                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/EVA/stability.md"
                 },
                 {
                   "title": "Dispersion Index",
                   "children": [],
                   "html_url": "https://teachbooks.io/HOS-workbook/main/2024/EVA/dispersion_index.html",
-                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/EVA/dispersion_index"
+                  "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/EVA/dispersion_index.md"
                 }
               ],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/EVA/threshold.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/EVA/threshold"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/EVA/threshold.md"
             }
           ],
           "html_url": null,
@@ -907,25 +901,25 @@
               "title": "Overview",
               "children": [],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/component/overview.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/component/overview"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/component/overview.md"
             },
             {
               "title": "Notation",
               "children": [],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/component/notation.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/component/notation"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/component/notation.md"
             },
             {
               "title": "First-Order Reliability Method (FORM)",
               "children": [],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/component/form.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/component/form"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/component/form.md"
             },
             {
               "title": "Comparison of MCS and FORM",
               "children": [],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/component/mcs_form.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/component/mcs_form"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/component/mcs_form.md"
             }
           ],
           "html_url": null,
@@ -938,13 +932,13 @@
               "title": "Overview",
               "children": [],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/system/overview.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/system/overview"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/system/overview.md"
             },
             {
               "title": "Fault Tree",
               "children": [],
               "html_url": "https://teachbooks.io/HOS-workbook/main/2024/system/fault_tree.html",
-              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/2024/system/fault_tree"
+              "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/2024/system/fault_tree.md"
             }
           ],
           "html_url": null,
@@ -952,7 +946,7 @@
         }
       ],
       "html_url": "https://teachbooks.io/HOS-workbook/main/intro.html",
-      "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/intro.md"
+      "external_url": "https://github.com/TeachBooks/HOS-workbook/blob/main/book/book/intro.md"
     }
   },
   {
@@ -973,55 +967,55 @@
               "title": "DV-SB-ligger",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Generic_examples_Structural_Mechanics/DV-SB-ligger.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Generic_examples_Structural_Mechanics/DV-SB-ligger"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Generic_examples_Structural_Mechanics/DV-SB-ligger.md"
             },
             {
               "title": "DV-SB-ligger-F",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Generic_examples_Structural_Mechanics/DV-SB-ligger-F.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Generic_examples_Structural_Mechanics/DV-SB-ligger-F"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Generic_examples_Structural_Mechanics/DV-SB-ligger-F.md"
             },
             {
               "title": "DV-SOB-ligger",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Generic_examples_Structural_Mechanics/DV-SOB-ligger.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Generic_examples_Structural_Mechanics/DV-SOB-ligger"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Generic_examples_Structural_Mechanics/DV-SOB-ligger.md"
             },
             {
               "title": "DV-SOB-ligger-met-veer",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Generic_examples_Structural_Mechanics/DV-SOB-ligger-met-veer.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Generic_examples_Structural_Mechanics/DV-SOB-ligger-met-veer"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Generic_examples_Structural_Mechanics/DV-SOB-ligger-met-veer.md"
             },
             {
               "title": "Vakwerk_SB",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Generic_examples_Structural_Mechanics/Vakwerk_SB.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Generic_examples_Structural_Mechanics/Vakwerk_SB"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Generic_examples_Structural_Mechanics/Vakwerk_SB.md"
             },
             {
               "title": "VGM-q-last",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Generic_examples_Structural_Mechanics/VGM-q-last.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Generic_examples_Structural_Mechanics/VGM-q-last"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Generic_examples_Structural_Mechanics/VGM-q-last.md"
             },
             {
               "title": "Het gebruik van Python bij Constructiemechanica",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Instruction/Het_gebruik_van_Python_bij_ConstructieMechanica.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Instruction/Het_gebruik_van_Python_bij_ConstructieMechanica"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Instruction/Het_gebruik_van_Python_bij_ConstructieMechanica.md"
             },
             {
               "title": "SymPy example for Structural Mechanics problems",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Instruction/SymPy_example_for_Structural_Mechanics_problems.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Instruction/SymPy_example_for_Structural_Mechanics_problems"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Instruction/SymPy_example_for_Structural_Mechanics_problems.md"
             },
             {
               "title": "Singularity functions",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Other_examples/Singularity_function_with_hinged_beam.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Other_examples/Singularity_function_with_hinged_beam"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Other_examples/Singularity_function_with_hinged_beam.md"
             }
           ],
           "html_url": null,
@@ -1034,7 +1028,7 @@
               "title": "MVN line",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Constructiemechanica_1/TOZ%204.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Constructiemechanica_1/TOZ 4"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Constructiemechanica_1/TOZ 4.md"
             }
           ],
           "html_url": null,
@@ -1047,37 +1041,37 @@
               "title": "Basisgeval college statisch onbepaald met Python",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Constructiemechanica_3/basisgeval-college-statischonbepaald-met-Python.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Constructiemechanica_3/basisgeval-college-statischonbepaald-met-Python"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Constructiemechanica_3/basisgeval-college-statischonbepaald-met-Python.md"
             },
             {
               "title": "Introductie SymPy voor Matrixframe opdracht",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Constructiemechanica_3/College_introductie_MatrixFrame_opdracht.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Constructiemechanica_3/College_introductie_MatrixFrame_opdracht"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Constructiemechanica_3/College_introductie_MatrixFrame_opdracht.md"
             },
             {
               "title": "Introductie verplaatsingenmethode",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Constructiemechanica_3/Introductie_verplaatsingenmethode.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Constructiemechanica_3/Introductie_verplaatsingenmethode"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Constructiemechanica_3/Introductie_verplaatsingenmethode.md"
             },
             {
               "title": "Sympy voorbeeld 1",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Constructiemechanica_3/Sympy_voorbeeld_1.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Constructiemechanica_3/Sympy_voorbeeld_1"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Constructiemechanica_3/Sympy_voorbeeld_1.md"
             },
             {
               "title": "Sympy voorbeeld 2",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Constructiemechanica_3/Sympy_voorbeeld_2.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Constructiemechanica_3/Sympy_voorbeeld_2"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Constructiemechanica_3/Sympy_voorbeeld_2.md"
             },
             {
               "title": "Sympy voorbeeld 3",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Constructiemechanica_3/Sympy_voorbeeld_3.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Constructiemechanica_3/Sympy_voorbeeld_3"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Constructiemechanica_3/Sympy_voorbeeld_3.md"
             }
           ],
           "html_url": null,
@@ -1090,37 +1084,37 @@
               "title": "Parabolic cable",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Base_Structural_Engineering/Exact_length_parabolic_cable.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Base_Structural_Engineering/Exact_length_parabolic_cable"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Base_Structural_Engineering/Exact_length_parabolic_cable.md"
             },
             {
               "title": "Example Extension week 1 strain energy#",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Base_Structural_Engineering/Example_Extension_week_1_strain_energy.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Base_Structural_Engineering/Example_Extension_week_1_strain_energy"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Base_Structural_Engineering/Example_Extension_week_1_strain_energy.md"
             },
             {
               "title": "Lecture 4 exercise 1 cable",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Base_Structural_Engineering/Lecture_4_exercise_1_cable.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Base_Structural_Engineering/Lecture_4_exercise_1_cable"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Base_Structural_Engineering/Lecture_4_exercise_1_cable.md"
             },
             {
               "title": "Taylor series",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Base_Structural_Engineering/Taylor_series.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Base_Structural_Engineering/Taylor_series"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Base_Structural_Engineering/Taylor_series.md"
             },
             {
               "title": "Variation of load cable",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Base_Structural_Engineering/Variation_of_load_cable.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Base_Structural_Engineering/Variation_of_load_cable"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Base_Structural_Engineering/Variation_of_load_cable.md"
             },
             {
               "title": "Wrinkler element definition",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Base_Structural_Engineering/Wrinkler_element_definition.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Base_Structural_Engineering/Wrinkler_element_definition"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Base_Structural_Engineering/Wrinkler_element_definition.md"
             }
           ],
           "html_url": null,
@@ -1133,7 +1127,7 @@
               "title": "Fourier series step wise constant",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Dynamics/Fourier%20series%20step%20wise%20constant.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Dynamics/Fourier series step wise constant"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Dynamics/Fourier series step wise constant.md"
             }
           ],
           "html_url": null,
@@ -1146,61 +1140,61 @@
               "title": "CIE4140_Lecture_13_Part_1_Python",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_1_Python.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_1_Python"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_1_Python.md"
             },
             {
               "title": "CIE4140_Lecture_13_Part_1_Python_seperate_q",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_1_Python_seperate_q.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_1_Python_seperate_q"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_1_Python_seperate_q.md"
             },
             {
               "title": "CIE4140_Lecture_13_Part_2_Python",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_2_Python.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_2_Python"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_2_Python.md"
             },
             {
               "title": "CIE_4140_Lecture_2_1_Python",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Dynamics_of_Structures/CIE_4140_Lecture_2_1_Python.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Dynamics_of_Structures/CIE_4140_Lecture_2_1_Python"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Dynamics_of_Structures/CIE_4140_Lecture_2_1_Python.md"
             },
             {
               "title": "CIE_4140_Lecture_2_2_Python",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Dynamics_of_Structures/CIE_4140_Lecture_2_2_Python.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Dynamics_of_Structures/CIE_4140_Lecture_2_2_Python"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Dynamics_of_Structures/CIE_4140_Lecture_2_2_Python.md"
             },
             {
               "title": "CIE_4140_Lecture_3_1_Python",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_1_Python.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_1_Python"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_1_Python.md"
             },
             {
               "title": "CIE_4140_Lecture_3_2_Python",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_2_Python.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_2_Python"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_2_Python.md"
             },
             {
               "title": "CIE_4140_Lecture_3_3_Python",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_3_Python.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_3_Python"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_3_Python.md"
             },
             {
               "title": "CIE_4140_Lecture_3_4_Python",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_4_Python.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_4_Python"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_4_Python.md"
             },
             {
               "title": "CIE_4140_Lecture_18_Part_1_Python",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_Dynamics_of_Structures/CIE_4140_Lecture_18_Part_1_Python.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_Dynamics_of_Structures/CIE_4140_Lecture_18_Part_1_Python"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_Dynamics_of_Structures/CIE_4140_Lecture_18_Part_1_Python.md"
             }
           ],
           "html_url": null,
@@ -1213,55 +1207,55 @@
               "title": "Assignment bending shear beam B",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_slender_structures/Assignment_bending_shear_beam_B.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_slender_structures/Assignment_bending_shear_beam_B"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_slender_structures/Assignment_bending_shear_beam_B.md"
             },
             {
               "title": "Beam with varying EI and q",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_slender_structures/Beam_with_varying_EI_and_q.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_slender_structures/Beam_with_varying_EI_and_q"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_slender_structures/Beam_with_varying_EI_and_q.md"
             },
             {
               "title": "Constrained bending with tension",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_slender_structures/Constrained_bending_with_tension.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_slender_structures/Constrained_bending_with_tension"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_slender_structures/Constrained_bending_with_tension.md"
             },
             {
               "title": "Exampel riser model",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_slender_structures/Example_riser_model.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_slender_structures/Example_riser_model"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_slender_structures/Example_riser_model.md"
             },
             {
               "title": "Example wheel on cable dirac",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_slender_structures/Example_wheel_on_cable_dirac.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_slender_structures/Example_wheel_on_cable_dirac"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_slender_structures/Example_wheel_on_cable_dirac.md"
             },
             {
               "title": "Foundation pile",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_slender_structures/Foundation_pile.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_slender_structures/Foundation_pile"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_slender_structures/Foundation_pile.md"
             },
             {
               "title": "Park bridge 2018",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_slender_structures/Park_bridge_2018.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_slender_structures/Park_bridge_2018"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_slender_structures/Park_bridge_2018.md"
             },
             {
               "title": "Timoshenko beam",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_slender_structures/Timoshenko_Beam.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_slender_structures/Timoshenko_Beam"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_slender_structures/Timoshenko_Beam.md"
             },
             {
               "title": "Timoshenko Beam element definition",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_slender_structures/Timoshenko_Beam_element_definition.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_slender_structures/Timoshenko_Beam_element_definition"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_slender_structures/Timoshenko_Beam_element_definition.md"
             }
           ],
           "html_url": null,
@@ -1274,13 +1268,13 @@
               "title": "2D deep beam",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_from_others/Solution%20with%20replacement.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_from_others/Solution with replacement"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_from_others/Solution with replacement.md"
             },
             {
               "title": "2D deep beam",
               "children": [],
               "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/Examples_from_others/Solution%20with%20symbols.html",
-              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/Examples_from_others/Solution with symbols"
+              "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/Examples_from_others/Solution with symbols.md"
             }
           ],
           "html_url": null,
@@ -1288,7 +1282,7 @@
         }
       ],
       "html_url": "https://oit.tudelft.nl/Sympy-Mechanics/main/intro.html",
-      "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/intro.md"
+      "external_url": "https://github.com/TUDelft-books/Sympy-Mechanics/blob/main/book/book/intro.md"
     }
   }
 ]

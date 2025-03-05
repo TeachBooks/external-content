@@ -193,6 +193,7 @@ def test_merge_tocs():
     )
     assert toc == expected
 
+
 @pytest.mark.skip("Goes to the internet")
 def test_enrich_catalog_item():
     enriched = enrich_catalog_item(item)
