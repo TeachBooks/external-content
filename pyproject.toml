@@ -1,0 +1,17 @@
+[project]
+name = "teachbooks-recombiner"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "requests",
+"beautifulsoup4",
+"pyyaml",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+    "ruff>=0.9.9",
+]

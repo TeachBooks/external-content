@@ -1,0 +1,21 @@
+# Item in private repo, TODO add auth token when fetching from private gitlab
+# - html_url: https://teachbooks.tudelft.nl/engineering-hydrology
+#   code_url: https://gitlab.tudelft.nl/interactivetextbooks-citg/engineering-hydrology
+#   release: v1.0.0
+#   toc_path: book/_toc.yml
+- html_url: https://teachbooks.io/manual/intro.html
+  code_url: https://github.com/TeachBooks/manual
+  release: v1.1.1
+  toc_path: book/_toc.yml
+- html_url: https://interactivetextbooks.tudelft.nl/risk-reliability/intro.html#
+  code_url: https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability
+  release: v0.1
+  toc_path: book/_toc.yml
+- html_url: https://teachbooks.io/HOS-workbook/main/intro.html
+  code_url: https://github.com/TeachBooks/HOS-workbook
+  toc_path: book/_toc.yml
+  release: main
+- html_url: https://oit.tudelft.nl/Sympy-Mechanics/main/intro.html
+  code_url: https://github.com/TUDelft-books/Sympy-Mechanics
+  toc_path: book/_toc.yml
+  release: main
