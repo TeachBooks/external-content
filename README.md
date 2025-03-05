@@ -3,6 +3,8 @@
 This is a web app to pick chapters from a pre-defined list of teach books and combine them into a new book using
 the new `external` table of content entry type, see [teachbook package](https://github.com/TeachBooks/TeachBooks/blob/dd2418e0695d42d78a764cb165dd5d77875be6d9/docs/source/external.rst).
 
+[![Checked with Biome](https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev)
+
 ## Develop
 
 ```bash
