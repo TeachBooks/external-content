@@ -109,7 +109,7 @@ const ExternalCard: Component<{
 
 const BookCard: Component<{ book: Book }> = (props) => {
   return (
-    <div class="border p-4 shadow">
+    <div class="w-96 border p-4 shadow">
       <h2 class="text-xl">{props.book.title}</h2>
       <img
         class="size-32 object-contain"
