@@ -19,13 +19,19 @@
     "tailwindcss": "^4.0.7",
     "typescript": "^5.8.0",
     "vite": "^6.0.0",
-    "vite-plugin-solid": "^2.11.6"
+    "vite-plugin-solid": "^2.11.6",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "dependencies": {
     "solid-js": "^1.9.5"
   },
   "pnpm": {
-    "ignoredBuiltDependencies": ["esbuild"],
-    "onlyBuiltDependencies": ["@biomejs/biome", "esbuild"]
+    "ignoredBuiltDependencies": [
+      "esbuild"
+    ],
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "esbuild"
+    ]
   }
 }
