@@ -46,7 +46,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build
-        run: pnpm run build
+        run: pnpm build
         env:
           BASE_URL: /external-content/
       - name: Upload artifact
