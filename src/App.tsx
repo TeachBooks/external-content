@@ -263,9 +263,7 @@ const DiyInstructions: Component = () => {
             Copy <MdiClipboard />
           </button>{" "}
           the following text to clipboard
-          <div class="my-4 w-96 overflow-scroll">
-            <pre class="">{text()}</pre>
-          </div>
+          <pre class="my-4 w-96 overflow-scroll">{text()}</pre>
         </li>
         <li>
           Paste it into <i>parts:</i> or <i>chapters:</i> section in the{" "}
@@ -285,11 +283,11 @@ const App: Component = () => {
   return (
     <div class="w-full p-2">
       <div>
-      <h1 class="pt-8 text-3xl">Teachbook recombiner</h1>
-      <p class="py-4">
-        Select chapters from the available teach books to incorporate into your
-        own teach book.
-      </p>
+        <h1 class="pt-8 text-3xl">Teachbook recombiner</h1>
+        <p class="py-4">
+          Select chapters from the available teach books to incorporate into
+          your own teach book.
+        </p>
       </div>
       <div class="flex w-full flex-row gap-4">
         <div class="max-w-xl">
