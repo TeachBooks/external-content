@@ -15,6 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@types/node": "22",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.5.3",
     "tailwindcss": "3",
@@ -32,7 +33,12 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "pnpm": {
-    "ignoredBuiltDependencies": ["esbuild"],
-    "onlyBuiltDependencies": ["@biomejs/biome", "esbuild"]
+    "ignoredBuiltDependencies": [
+      "esbuild"
+    ],
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "esbuild"
+    ]
   }
 }
