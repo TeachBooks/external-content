@@ -10,9 +10,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
 import { Checkbox } from "./components/ui/checkbox";
 import { Dialog, DialogContent, DialogTrigger } from "./components/ui/dialog";
 import { Label } from "./components/ui/label";
+import { Toaster, showToast } from "./components/ui/toast";
 import {
   MdiBookOpenBlankVariantOutline,
-  MdiClipboard,
+  MdiClipboardTextOutline,
   MdiGithub,
   MdiGitlab,
   MdiLaunch,
@@ -128,28 +129,28 @@ const ExternalCard: Component<{
 const BookCard: Component<{ book: Book }> = (props) => {
   return (
     <Card class="w-96">
-      <CardHeader class="flex flex-row items-start justify-between gap-1 pb-2">
-        <CardTitle class="text-xl">
+      <CardHeader class="pb-2">
+        <div class="flex flex-row items-start justify-between gap-1">
           <img
             class="size-24 object-contain"
             src={props.book.logo}
             alt={props.book.title}
           />
-          {props.book.title}
-        </CardTitle>
-        <div class="flex flex-row gap-2">
-          <a href={props.book.html_url} aria-label="Read online">
-            <MdiBookOpenBlankVariantOutline />
-          </a>
-          <a href={props.book.code_url} aria-label="View code">
-            <Show
-              when={props.book.code_url.includes("github")}
-              fallback={<MdiGitlab />}
-            >
-              <MdiGithub />
-            </Show>
-          </a>
+          <div class="flex flex-row gap-2">
+            <a href={props.book.html_url} aria-label="Read online">
+              <MdiBookOpenBlankVariantOutline />
+            </a>
+            <a href={props.book.code_url} aria-label="View code">
+              <Show
+                when={props.book.code_url.includes("github")}
+                fallback={<MdiGitlab />}
+              >
+                <MdiGithub />
+              </Show>
+            </a>
+          </div>
         </div>
+        <CardTitle class="text-xl">{props.book.title}</CardTitle>
       </CardHeader>
       <CardContent>
         {/* Author contains html which does not render nicely
@@ -172,8 +173,8 @@ const BookCard: Component<{ book: Book }> = (props) => {
 const InstructionActions: Component = () => {
   return (
     <>
-      <h2 class="text-2xl">Actions</h2>
-      <div class="flex flex-col items-start gap-2">
+      <h2 class="py-4 text-2xl">Actions</h2>
+      <div class="flex flex-col items-start gap-2 px-12">
         <Dialog>
           <DialogTrigger as={Button<"button">} variant="default" class="w-full">
             Mail someone instructions to incorporate these chapters
@@ -215,6 +216,10 @@ ${toc}\n
 
   async function copyText() {
     await navigator.clipboard.writeText(text());
+    showToast({
+      title: "Copied instructions to clipboard",
+      variant: "success",
+    });
   }
   return (
     <div class="mt-4">
@@ -248,6 +253,10 @@ const DiyInstructions: Component = () => {
   );
   async function copyText() {
     await navigator.clipboard.writeText(text());
+    showToast({
+      title: "Copied instructions to clipboard",
+      variant: "success",
+    });
   }
 
   return (
@@ -255,13 +264,13 @@ const DiyInstructions: Component = () => {
       <h2 class="text-2xl">Instructions</h2>
       <ol class="list-inside list-decimal">
         <li>
-          <button
-            type="button"
+          <Button
+            variant="ghost"
             onClick={copyText}
             class="inline-flex items-center justify-center rounded-md border font-medium text-sm ring-offset-background transition-colors hover:bg-blue-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 "
           >
-            Copy <MdiClipboard />
-          </button>{" "}
+            Copy <MdiClipboardTextOutline />
+          </Button>{" "}
           the following text to clipboard
           <pre class="my-4 w-96 overflow-scroll">{text()}</pre>
         </li>
@@ -291,7 +300,7 @@ const App: Component = () => {
       </div>
       <div class="flex w-full flex-row gap-4">
         <div class="max-w-xl">
-          <h2 class="text-2xl">Selected chapters</h2>
+          <h2 class="py-4 text-2xl">Selected chapters</h2>
           <ul class="list-inside list-disc">
             <For each={externals()}>
               {(external) => (
@@ -317,6 +326,7 @@ const App: Component = () => {
           </div>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };
