@@ -185,7 +185,7 @@ const InstructionActions: Component = () => {
         </Dialog>
         <Dialog>
           <DialogTrigger as={Button<"button">} variant="outline" class="w-full">
-            Show do it yourself instructions
+            Show how do it yourself instructions
           </DialogTrigger>
           <DialogContent>
             <DiyInstructions />
@@ -204,7 +204,7 @@ const MailInstructions: Component = () => {
     const toc = externals()
       .map((external) => `- external: ${external.entry.external_url}`)
       .join("\n");
-    return `Please add the following chapters to the teach book, by copying below it into "parts" section in the "book/_toc.yml"file:\n
+    return `Please add the following chapters to the teach book, by copying below into "parts" section of the "book/_toc.yml" file:\n
 ${toc}\n
 \n
 `;
@@ -271,7 +271,7 @@ const DiyInstructions: Component = () => {
           >
             Copy <MdiClipboardTextOutline />
           </Button>{" "}
-          the following text to clipboard
+          the following text to clipboard:
           <pre class="my-4 w-96 overflow-scroll">{text()}</pre>
         </li>
         <li>
