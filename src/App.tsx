@@ -1,8 +1,11 @@
 import {
   type Component,
   For,
+  Match,
   Show,
+  Switch,
   createMemo,
+  createSignal,
   createUniqueId,
 } from "solid-js";
 import {
@@ -10,6 +13,7 @@ import {
   MdiClipboard,
   MdiGithub,
   MdiGitlab,
+  MdiLaunch,
 } from "./icons";
 import {
   type Book,
@@ -17,6 +21,7 @@ import {
   books,
   checkedExternal,
   externals,
+  clearExternals,
   toggleExternal,
 } from "./store";
 
@@ -32,16 +37,25 @@ const TocHeader: Component<{ entry: TocEntry; book: Book; parents: string }> = (
   return (
     <Show
       when={props.entry.html_url}
-      fallback={<div class="inline">{props.entry.title}</div>}
+      fallback={<div class="inline-block">{props.entry.title}</div>}
     >
-      <div class="inline">
+      <div class="inline-block">
         <input
           type="checkbox"
           id={id}
           onChange={onChange}
           checked={checked()}
         />{" "}
-        <label for={id}>{props.entry.title}</label>
+        <label for={id}>{props.entry.title}</label>{" "}
+        <a
+          // biome-ignore lint/style/noNonNullAssertion: already checked
+          href={props.entry.html_url!}
+          target="_blank"
+          rel="noreferrer"
+          class="inline-block align-middle"
+        >
+          <MdiLaunch />
+        </a>
       </div>
     </Show>
   );
@@ -110,13 +124,13 @@ const ExternalCard: Component<{
 const BookCard: Component<{ book: Book }> = (props) => {
   return (
     <div class="w-96 border p-4 shadow">
-      <h2 class="text-xl">{props.book.title}</h2>
       <img
-        class="size-32 object-contain"
+        class="size-24 object-contain"
         src={props.book.logo}
         alt={props.book.title}
       />
       {/* <p innerHTML={props.book.author} /> */}
+      <h2 class="text-xl">{props.book.title}</h2>
       <div class="flex flex-row gap-2">
         <a href={props.book.html_url} aria-label="Read online">
           <MdiBookOpenBlankVariantOutline />
@@ -143,7 +157,64 @@ const BookCard: Component<{ book: Book }> = (props) => {
   );
 };
 
-const Instructions: Component = () => {
+const InstructionActions: Component = () => {
+  const [showDialog, setShowDialog] = createSignal<"" | "mail" | "show">("");
+  return (
+    <>
+      <div class="flex flex-col items-start gap-2">
+        <button
+          type="button"
+          onClick={() => setShowDialog("mail")}
+        >
+          Mail someone instructions to incorporate these chapters
+        </button>
+        <button
+          type="button"
+          onClick={() => setShowDialog("show")}
+        >
+          Show instructions so I can do it myself
+        </button>
+        <button type="button" onClick={clearExternals}>
+          Clear selection
+        </button>
+      </div>
+      <dialog open={!!showDialog} onClose={() => setShowDialog("")}>
+        <Switch>
+          <Match when={showDialog() === "mail"}>
+            <MailInstructions />
+          </Match>
+          <Match when={showDialog() === "show"}>
+            <DiyInstructions />
+          </Match>
+        </Switch>
+      </dialog>
+    </>
+  );
+};
+
+const MailInstructions: Component = () => {
+  return (
+    <div class="mt-4">
+      <h2 class="text-2xl">Mail instructions</h2>
+      <ol class="list-inside list-decimal">
+        <li>
+          Copy the following text
+          <pre class="my-4 w-80 overflow-auto">
+            {externals()
+              .map((external) => `- external: ${external.entry.external_url}`)
+              .join("\n")}
+          </pre>
+        </li>
+        <li>Paste it into the email body</li>
+        <li>
+          Send the email to the person responsible for the teach book repository
+        </li>
+      </ol>
+    </div>
+  );
+};
+
+const DiyInstructions: Component = () => {
   const text = createMemo(() =>
     externals()
       .map((external) => `- external: ${external.entry.external_url}`)
@@ -154,36 +225,31 @@ const Instructions: Component = () => {
   }
 
   return (
-    <Show
-      when={externals().length > 0}
-      fallback={<p>No book chapters have been selected.</p>}
-    >
-      <div class="mt-4">
-        <h2 class="text-2xl">Instructions</h2>
-        <ol class="list-inside list-decimal">
-          <li>
-            <button
-              type="button"
-              onClick={copyText}
-              class="inline-flex items-center justify-center rounded-md border font-medium text-sm ring-offset-background transition-colors hover:bg-blue-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 "
-            >
-              Copy <MdiClipboard />
-            </button>{" "}
-            the following text
-            <pre class="my-4 w-80 overflow-auto">{text()}</pre>
-          </li>
-          <li>
-            Paste it into <i>parts:</i> or <i>chapters:</i> section in the{" "}
-            <i>book/_toc.yml</i> file of your teach book repository
-          </li>
-          <li>Commit and push the changes</li>
-          <li>
-            Wait for GitHub action workflow to deploy your teach book with the
-            selected external chapters.
-          </li>
-        </ol>
-      </div>
-    </Show>
+    <div class="mt-4">
+      <h2 class="text-2xl">Instructions</h2>
+      <ol class="list-inside list-decimal">
+        <li>
+          <button
+            type="button"
+            onClick={copyText}
+            class="inline-flex items-center justify-center rounded-md border font-medium text-sm ring-offset-background transition-colors hover:bg-blue-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 "
+          >
+            Copy <MdiClipboard />
+          </button>{" "}
+          the following text
+          <pre class="my-4 w-80 overflow-auto">{text()}</pre>
+        </li>
+        <li>
+          Paste it into <i>parts:</i> or <i>chapters:</i> section in the{" "}
+          <i>book/_toc.yml</i> file of your teach book repository
+        </li>
+        <li>Commit and push the changes</li>
+        <li>
+          Wait for GitHub action workflow to deploy your teach book with the
+          selected external chapters.
+        </li>
+      </ol>
+    </div>
   );
 };
 
@@ -205,7 +271,12 @@ const App: Component = () => {
               )}
             </For>
           </ul>
-          <Instructions />
+          <Show
+            when={externals().length > 0}
+            fallback={<p>No teach book chapters have been selected.</p>}
+          >
+            <InstructionActions />
+          </Show>
         </div>
         <div class="">
           <h2 class="text-2xl">Available teach books</h2>

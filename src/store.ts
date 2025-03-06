@@ -47,3 +47,6 @@ export function checkedExternal(book: Book, entry: TocEntry) {
     (external) => external.book === book && external.entry === entry,
   );
 }
+export function clearExternals() {
+  setExternals([]);
+}
