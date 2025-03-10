@@ -3,11 +3,17 @@ import {
   For,
   Show,
   createMemo,
+  createSignal,
   createUniqueId,
 } from "solid-js";
 import { Button, buttonVariants } from "./components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
 import { Checkbox } from "./components/ui/checkbox";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "./components/ui/collapsible";
 import { Dialog, DialogContent, DialogTrigger } from "./components/ui/dialog";
 import { Label } from "./components/ui/label";
 import { Toaster, showToast } from "./components/ui/toast";
@@ -17,6 +23,8 @@ import {
   MdiGithub,
   MdiGitlab,
   MdiLaunch,
+  MdiMinusBoxOutline,
+  MdiPlusBoxOutline,
 } from "./icons";
 import {
   type Book,
@@ -40,16 +48,11 @@ const TocHeader: Component<{ entry: TocEntry; book: Book; parents: string }> = (
   return (
     <Show
       when={props.entry.html_url}
-      fallback={<div class="inline-block">{props.entry.title}</div>}
+      fallback={<div class="py-1">{props.entry.title}</div>}
     >
-      <div class="inline-block">
-        <Checkbox
-          class="inline-block space-x-0 align-middle"
-          id={id}
-          onChange={onChange}
-          checked={checked()}
-        />{" "}
-        <Label class="inline-block" for={id}>
+      <div class="flex flex-row items-center gap-1 py-1">
+        <Checkbox class="" id={id} onChange={onChange} checked={checked()} />{" "}
+        <Label class="" for={id}>
           {props.entry.title}
         </Label>{" "}
         <a
@@ -57,7 +60,7 @@ const TocHeader: Component<{ entry: TocEntry; book: Book; parents: string }> = (
           href={props.entry.html_url!}
           target="_blank"
           rel="noreferrer"
-          class="inline-block align-middle"
+          class=""
         >
           <MdiLaunch />
         </a>
@@ -76,6 +79,7 @@ const TocEntryItem: Component<{
       ? `${props.parents} / ${props.entry.title}`
       : props.entry.title,
   );
+  const [expanded, setExpanded] = createSignal(false);
   return (
     <li>
       <Show
@@ -88,27 +92,34 @@ const TocEntryItem: Component<{
           />
         }
       >
-        <details>
-          <summary>
+        <Collapsible open={expanded()} onOpenChange={setExpanded}>
+          <CollapsibleTrigger class="flex items-center gap-1">
+            {/* Click entry will expand and check checkbox, or collapsible and uncheck checkbox
+              TODO find way so only plus/minus icon causes expand/collapse
+            */}
             <TocHeader
               entry={props.entry}
               book={props.book}
               parents={parents()}
             />
-          </summary>
-
-          <ol class="ml-8 list-inside">
-            <For each={props.entry.children}>
-              {(child) => (
-                <TocEntryItem
-                  entry={child}
-                  book={props.book}
-                  parents={parents()}
-                />
-              )}
-            </For>
-          </ol>
-        </details>
+            <Show when={expanded()} fallback={<MdiPlusBoxOutline />}>
+              <MdiMinusBoxOutline />
+            </Show>
+          </CollapsibleTrigger>
+          <CollapsibleContent>
+            <ol class="ml-4 list-inside">
+              <For each={props.entry.children}>
+                {(child) => (
+                  <TocEntryItem
+                    entry={child}
+                    book={props.book}
+                    parents={parents()}
+                  />
+                )}
+              </For>
+            </ol>
+          </CollapsibleContent>
+        </Collapsible>
       </Show>
     </li>
   );
@@ -156,15 +167,16 @@ const BookCard: Component<{ book: Book }> = (props) => {
         {/* Author contains html which does not render nicely
         TODO strip html or render pretty */}
         {/* <p innerHTML={props.book.author} /> */}
-        <details open>
-          <summary>Chapters</summary>
-
-          <ol class="ml-4 list-inside">
-            <For each={props.book.toc.children}>
-              {(entry) => <TocEntryItem entry={entry} book={props.book} />}
-            </For>
-          </ol>
-        </details>
+        <Collapsible defaultOpen>
+          <CollapsibleTrigger>Chapters</CollapsibleTrigger>
+          <CollapsibleContent>
+            <ol class="ml-4 list-inside">
+              <For each={props.book.toc.children}>
+                {(entry) => <TocEntryItem entry={entry} book={props.book} />}
+              </For>
+            </ol>
+          </CollapsibleContent>
+        </Collapsible>
       </CardContent>
     </Card>
   );
@@ -187,7 +199,7 @@ const InstructionActions: Component = () => {
           <DialogTrigger as={Button<"button">} variant="outline" class="w-full">
             Show how do it yourself instructions
           </DialogTrigger>
-          <DialogContent>
+          <DialogContent class="max-w-4xl">
             <DiyInstructions />
           </DialogContent>
         </Dialog>
@@ -272,7 +284,7 @@ const DiyInstructions: Component = () => {
             Copy <MdiClipboardTextOutline />
           </Button>{" "}
           the following text to clipboard:
-          <pre class="my-4 w-96 overflow-scroll">{text()}</pre>
+          <pre class="my-4 max-w-3xl overflow-y-auto">{text()}</pre>
         </li>
         <li>
           Paste it into <i>parts:</i> or <i>chapters:</i> section in the{" "}

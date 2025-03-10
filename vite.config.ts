@@ -1,4 +1,4 @@
-import {env} from "node:process";
+import { env } from "node:process";
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
 import tsconfigPaths from "vite-tsconfig-paths";
