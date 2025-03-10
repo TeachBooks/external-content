@@ -4,8 +4,7 @@ name: Deploy app to GH Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    # TODO change when renamed to name
-    branches: ["webapp"]
+    branches: ["main"]
    # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
