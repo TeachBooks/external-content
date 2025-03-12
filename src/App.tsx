@@ -46,26 +46,22 @@ const TocHeader: Component<{ entry: TocEntry; book: Book; parents: string }> = (
   const checked = createMemo(() => checkedExternal(props.book, props.entry));
 
   return (
-    <Show
-      when={props.entry.html_url}
-      fallback={<div class="py-1">{props.entry.title}</div>}
-    >
-      <div class="flex flex-row items-center gap-1 py-1">
-        <Checkbox class="" id={id} onChange={onChange} checked={checked()} />{" "}
-        <Label class="" for={id}>
-          {props.entry.title}
-        </Label>{" "}
+    <div class="flex flex-row items-center gap-1 py-1">
+      <Checkbox id={id} onChange={onChange} checked={checked()} />
+      <Label for={`${id}-input`}>
+        {props.entry.title}
+      </Label>
+      <Show when={props.entry.html_url}>
         <a
           // biome-ignore lint/style/noNonNullAssertion: already checked
           href={props.entry.html_url!}
           target="_blank"
           rel="noreferrer"
-          class=""
         >
           <MdiLaunch />
         </a>
-      </div>
-    </Show>
+      </Show>
+    </div>
   );
 };
 
@@ -80,6 +76,7 @@ const TocEntryItem: Component<{
       : props.entry.title,
   );
   const [expanded, setExpanded] = createSignal(false);
+
   return (
     <li>
       <Show
@@ -93,19 +90,30 @@ const TocEntryItem: Component<{
         }
       >
         <Collapsible open={expanded()} onOpenChange={setExpanded}>
-          <CollapsibleTrigger class="flex items-center gap-1">
-            {/* Click entry will expand and check checkbox, or collapsible and uncheck checkbox
-              TODO find way so only plus/minus icon causes expand/collapse
-            */}
-            <TocHeader
-              entry={props.entry}
-              book={props.book}
-              parents={parents()}
-            />
-            <Show when={expanded()} fallback={<MdiPlusBoxOutline />}>
-              <MdiMinusBoxOutline />
-            </Show>
-          </CollapsibleTrigger>
+          <Show
+            when={props.entry.html_url}
+            fallback={
+              <CollapsibleTrigger class="flex items-center gap-1">
+                <div class="py-1">{props.entry.title}</div>
+                <Show when={expanded()} fallback={<MdiPlusBoxOutline />}>
+                  <MdiMinusBoxOutline />
+                </Show>
+              </CollapsibleTrigger>
+            }
+          >
+            <div class="flex items-center gap-1">
+              <TocHeader
+                entry={props.entry}
+                book={props.book}
+                parents={parents()}
+              />
+              <CollapsibleTrigger>
+                <Show when={expanded()} fallback={<MdiPlusBoxOutline />}>
+                  <MdiMinusBoxOutline />
+                </Show>
+              </CollapsibleTrigger>
+            </div>
+          </Show>
           <CollapsibleContent>
             <ol class="ml-4 list-inside">
               <For each={props.entry.children}>
