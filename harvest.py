@@ -218,10 +218,10 @@ def main():
         prog="harvest", description="Harvest toc catalog items"
     )
     parser.add_argument(
-        "--catalog", type=Path, help="Path to catalog file", default="catalog.yml"
+        "--catalog", type=Path, help="Path to catalog file", default="books.yml"
     )
     parser.add_argument(
-        "--output", "-o", type=Path, help="Path to output file", default="catalog.json"
+        "--output", "-o", type=Path, help="Path to output file", default="chapters.json"
     )
 
     args = parser.parse_args()

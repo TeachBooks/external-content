@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js";
-import rawCatalog from "../catalog.json";
+import rawCatalog from "../chapters.json";
 
 export interface TocEntry {
   title: string;
