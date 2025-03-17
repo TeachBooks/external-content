@@ -1,3 +1,4 @@
+import { TextFieldInput } from "@kobalte/core/src/text-field/text-field-input.jsx";
 import {
   type Component,
   For,
@@ -14,9 +15,22 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "./components/ui/collapsible";
-import { Dialog, DialogContent, DialogTrigger } from "./components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./components/ui/dialog";
 import { Label } from "./components/ui/label";
+import {
+  TextField,
+  TextFieldDescription,
+  TextFieldLabel,
+} from "./components/ui/text-field";
 import { Toaster, showToast } from "./components/ui/toast";
+import { harvestBook } from "./harvest";
 import {
   MdiBookOpenBlankVariantOutline,
   MdiClipboardTextOutline,
@@ -48,9 +62,7 @@ const TocHeader: Component<{ entry: TocEntry; book: Book; parents: string }> = (
   return (
     <div class="flex flex-row items-center gap-1 py-1">
       <Checkbox id={id} onChange={onChange} checked={checked()} />
-      <Label for={`${id}-input`}>
-        {props.entry.title}
-      </Label>
+      <Label for={`${id}-input`}>{props.entry.title}</Label>
       <Show when={props.entry.html_url}>
         <a
           // biome-ignore lint/style/noNonNullAssertion: already checked
@@ -292,7 +304,9 @@ const DiyInstructions: Component = () => {
             Copy <MdiClipboardTextOutline />
           </Button>{" "}
           the following text to clipboard:
-          <pre class="my-4 max-w-3xl overflow-y-auto bg-gray-10 p-4">{text()}</pre>
+          <pre class="my-4 max-w-3xl overflow-y-auto bg-gray-10 p-4">
+            {text()}
+          </pre>
         </li>
         <li>
           Paste it into <i>parts:</i> or <i>chapters:</i> section in the{" "}
@@ -307,6 +321,96 @@ const DiyInstructions: Component = () => {
     </div>
   );
 };
+
+function AddBookCard() {
+  async function onSubmit(event: Event) {
+    console.log(event);
+    const formData = new FormData(event.target as HTMLFormElement);
+    showToast({
+      title: "Book added, fetching chapters",
+      variant: "default",
+    });
+    const book = await harvestBook({
+      html_url: formData.get("html_url") as string,
+      code_url: formData.get("code_url") as string,
+      release: formData.get("release") as string,
+      toc_path: formData.get("toc_path") as string,
+    });
+    showToast({
+      title: "Chapters fetched",
+      variant: "success",
+    });
+    // TODO make reactive
+    books.push(book);
+  }
+  return (
+    <Dialog>
+      <DialogTrigger
+        as={Button<"button">}
+        variant="outline"
+        size="lg"
+        class="w-96 text-xl"
+      >
+        Add a book
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Add a book</DialogTitle>
+        </DialogHeader>
+        {/* TODO show form */}
+        <form onSubmit={onSubmit}>
+          <div class="grid gap-4 py-4">
+            <TextField
+              class="grid grid-cols-4 items-center gap-4"
+              name="html_url"
+            >
+              <TextFieldLabel class="text-right">Website URL</TextFieldLabel>
+              <TextFieldInput class="col-span-3" type="url" required />
+            </TextField>
+            <TextField
+              class="grid grid-cols-4 items-center gap-4"
+              name="code_url"
+            >
+              <TextFieldLabel class="text-right">
+                Code repository URL
+              </TextFieldLabel>
+              <TextFieldInput class="col-span-3" type="url" required />
+            </TextField>
+            <TextField
+              class="grid grid-cols-4 items-center gap-4"
+              name="release"
+            >
+              <TextFieldLabel class="text-right">
+                Release version
+              </TextFieldLabel>
+              <TextFieldDescription>
+                Can be tag, branch or commit hash.
+              </TextFieldDescription>
+              <TextFieldInput class="col-span-3" type="text" required />
+            </TextField>
+            <TextField
+              class="grid grid-cols-4 items-center gap-4"
+              name="toc_path"
+            >
+              <TextFieldLabel class="text-right">
+                Path of _toc.yml
+              </TextFieldLabel>
+              <TextFieldInput
+                class="col-span-3"
+                type="text"
+                value="book/_toc.yml"
+                required
+              />
+            </TextField>
+          </div>
+          <DialogFooter>
+            <Button type="submit">Add book & fetch its chapters</Button>
+          </DialogFooter>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+}
 
 const App: Component = () => {
   return (
@@ -343,6 +447,7 @@ const App: Component = () => {
           <h2 class="text-2xl">Available teach books</h2>
           <div class="flex flex-row flex-wrap gap-2">
             <For each={books}>{(book) => <BookCard book={book} />}</For>
+            <AddBookCard />
           </div>
         </div>
       </div>
