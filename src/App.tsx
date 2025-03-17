@@ -274,7 +274,7 @@ const DiyInstructions: Component = () => {
   async function copyText() {
     await navigator.clipboard.writeText(text());
     showToast({
-      title: "Copied instructions to clipboard",
+      title: "Copied externals to clipboard",
       variant: "success",
     });
   }
@@ -292,7 +292,7 @@ const DiyInstructions: Component = () => {
             Copy <MdiClipboardTextOutline />
           </Button>{" "}
           the following text to clipboard:
-          <pre class="my-4 max-w-3xl overflow-y-auto">{text()}</pre>
+          <pre class="my-4 max-w-3xl overflow-y-auto bg-gray-10 p-4">{text()}</pre>
         </li>
         <li>
           Paste it into <i>parts:</i> or <i>chapters:</i> section in the{" "}
