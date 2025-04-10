@@ -10,12 +10,6 @@ export default defineConfig({
   },
   build: {
     target: "esnext",
-    rollupOptions: {
-      external: ["jsdom"],
-    },
   },
   base: env.BASE_URL || "/",
-  define: {
-    "isBrowser": true,
-  },
 });

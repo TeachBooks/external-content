@@ -1,5 +1,6 @@
 import { parse } from "yaml";
 import type { Book, TocEntry } from "./store";
+import { isServer } from "solid-js/web";
 
 export interface BookQuery {
   html_url: string;
@@ -76,13 +77,12 @@ async function tocFromHtml(url: string): Promise<Array<[string, string]>> {
   }
   const html = await response.text();
   let doc: Document;
-  const isBrowser = typeof DOMParser !== "undefined"
-  if (isBrowser) {
-    const parser = new DOMParser();
-    doc = parser.parseFromString(html, "text/html");
-  } else {
+  if (isServer) {
     const { JSDOM } = await import("jsdom");
     doc = new JSDOM(html).window.document;
+  } else {
+    const parser = new DOMParser();
+    doc = parser.parseFromString(html, "text/html");
   }
   let toc: Element | null | undefined = doc.getElementById("bd-docs-nav");
   if (!toc) {
