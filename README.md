@@ -39,3 +39,17 @@ pnpm install
 pnpm harvest
 # Reads books.yml and generates chapters.json
 ```
+
+## Remote catalog
+
+If you want to show other books the then ones specified in the `./books.yml` file, you can point the app to a remote
+catalog file with the following steps
+1. Create a books.yml file
+2. Host it on the Internet and make sure that [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) is enabled.
+3. Open app with `http://teachbooks.io/external-content/?books_url=<your_url>`. Where `<your_url>` is the URL of your books.yml file.
+
+## Sharing user defined books
+
+In the web application you can add a book using a form. 
+
+To make those books shareable, you can click the `share` button in header of the books list. This will open a new window with a link in the adress bar. Sharing that link will allow other users to see the books you defined.

@@ -43,6 +43,7 @@ import {
   MdiPlusBoxOutline,
   MdiShareVariant,
 } from "./icons";
+import { decodeBooks, encodeBooks } from "./lib/io";
 import {
   type Book,
   type BookMeta,
@@ -426,7 +427,7 @@ const shareBooksUrl = () => {
     .filter((b) => b.deleteable)
     .map(metaOfBook);
   const searchParams = new URLSearchParams();
-  searchParams.set("books", JSON.stringify(meta));
+  searchParams.set("books", encodeBooks(meta));
   return `?${searchParams.toString()}`;
 };
 
@@ -435,10 +436,10 @@ const App: Component = () => {
     const params = new URLSearchParams(window.location.search);
     const bookmetas = params.get("books");
     if (bookmetas) {
-      const parsedBookmetas = JSON.parse(bookmetas);
+      const parsedBookmetas = decodeBooks(bookmetas);
       showToastPromise(fetchChapters(parsedBookmetas), {
         loading: "Fetching chapters of books",
-        success: () => "Books added",
+        success: () => "Books loaded",
         error: (e: unknown) => {
           console.error(e);
           return "Failed to fetch chapters";
@@ -449,11 +450,12 @@ const App: Component = () => {
     const bookmetasUrl = params.get("books_url");
     if (bookmetasUrl) {
       const response = await fetch(bookmetasUrl);
-      const parsedBookmetas = await response.json();
+      const raw = await response.text();
+      const parsedBookmetas = decodeBooks(raw);
       setBooks([]);
       showToastPromise(fetchChapters(parsedBookmetas), {
         loading: "Fetching chapters of books",
-        success: () => "Books added",
+        success: () => "Books loaded",
         error: (e: unknown) => {
           console.error(e);
           return "Failed to fetch chapters";
@@ -474,7 +476,7 @@ const App: Component = () => {
         </p>
       </div>
       <div class="flex w-full flex-row gap-4">
-        <div class="w-1/2">
+        <div class="w-1/3">
           <h2 class="py-4 text-2xl">Selected chapters</h2>
           <ul class="list-inside list-disc">
             <For each={externals()}>
