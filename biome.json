@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": [".venv", ".mypy_cache", "venv"]
+    "ignore": [".venv", ".mypy_cache", "venv", "dist"]
   },
   "formatter": {
     "enabled": true,
