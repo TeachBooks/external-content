@@ -1,4 +1,3 @@
-import { TextFieldInput } from "@kobalte/core/src/text-field/text-field-input.jsx";
 import {
   type Component,
   For,
@@ -27,13 +26,15 @@ import { Label } from "./components/ui/label";
 import {
   TextField,
   TextFieldDescription,
+  TextFieldInput,
   TextFieldLabel,
 } from "./components/ui/text-field";
-import { Toaster, showToast } from "./components/ui/toast";
+import { Toaster, showToast, showToastPromise } from "./components/ui/toast";
 import { harvestBook } from "./harvest";
 import {
   MdiBookOpenBlankVariantOutline,
   MdiClipboardTextOutline,
+  MdiDelete,
   MdiGithub,
   MdiGitlab,
   MdiLaunch,
@@ -43,9 +44,11 @@ import {
 import {
   type Book,
   type TocEntry,
+  addBook,
   books,
   checkedExternal,
   clearExternals,
+  deleteBook,
   externals,
   toggleExternal,
 } from "./store";
@@ -179,6 +182,16 @@ const BookCard: Component<{ book: Book }> = (props) => {
                 <MdiGithub />
               </Show>
             </a>
+            <Show when={props.book.deleteable}>
+              <button
+                type="button"
+                onClick={() => {
+                  deleteBook(props.book);
+                }}
+              >
+                <MdiDelete />
+              </button>
+            </Show>
           </div>
         </div>
         <CardTitle class="text-xl">{props.book.title}</CardTitle>
@@ -323,33 +336,41 @@ const DiyInstructions: Component = () => {
 };
 
 function AddBookCard() {
+  const [open, setOpen] = createSignal(false);
+
   async function onSubmit(event: Event) {
-    console.log(event);
+    event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
-    showToast({
-      title: "Book added, fetching chapters",
-      variant: "default",
-    });
-    const book = await harvestBook({
+    const promise = harvestBook({
       html_url: formData.get("html_url") as string,
       code_url: formData.get("code_url") as string,
       release: formData.get("release") as string,
       toc_path: formData.get("toc_path") as string,
     });
-    showToast({
-      title: "Chapters fetched",
-      variant: "success",
+    showToastPromise(promise, {
+      loading: "Fetching chapters of book",
+      success: (book) => {
+        if (open()) {
+          // When you added it you are allow to delete it
+          book.deleteable = true;
+          addBook(book);
+          setOpen(false);
+        }
+        return "Book added";
+      },
+      error: (e: unknown) => {
+        console.error(e);
+        return "Failed to fetch chapters";
+      },
     });
-    // TODO make reactive
-    books.push(book);
   }
   return (
-    <Dialog>
+    <Dialog open={open()} onOpenChange={setOpen}>
       <DialogTrigger
         as={Button<"button">}
         variant="outline"
         size="lg"
-        class="w-96 text-xl"
+        class="h-80 w-96 text-xl"
       >
         Add a book
       </DialogTrigger>
@@ -359,52 +380,31 @@ function AddBookCard() {
         </DialogHeader>
         {/* TODO show form */}
         <form onSubmit={onSubmit}>
-          <div class="grid gap-4 py-4">
-            <TextField
-              class="grid grid-cols-4 items-center gap-4"
-              name="html_url"
-            >
-              <TextFieldLabel class="text-right">Website URL</TextFieldLabel>
-              <TextFieldInput class="col-span-3" type="url" required />
+          <div class="flex flex-col gap-4 py-4">
+            <TextField name="html_url">
+              <TextFieldLabel>Website URL</TextFieldLabel>
+              <TextFieldInput type="url" required />
             </TextField>
-            <TextField
-              class="grid grid-cols-4 items-center gap-4"
-              name="code_url"
-            >
-              <TextFieldLabel class="text-right">
-                Code repository URL
-              </TextFieldLabel>
-              <TextFieldInput class="col-span-3" type="url" required />
+            <TextField name="code_url">
+              <TextFieldLabel>Code repository URL</TextFieldLabel>
+              <TextFieldInput type="url" required />
             </TextField>
-            <TextField
-              class="grid grid-cols-4 items-center gap-4"
-              name="release"
-            >
-              <TextFieldLabel class="text-right">
-                Release version
-              </TextFieldLabel>
-              <TextFieldDescription>
-                Can be tag, branch or commit hash.
-              </TextFieldDescription>
-              <TextFieldInput class="col-span-3" type="text" required />
+            <TextField name="release">
+              <div>
+                <TextFieldLabel>Release version</TextFieldLabel>
+                <TextFieldDescription>
+                  Can be tag, branch or commit hash.
+                </TextFieldDescription>
+              </div>
+              <TextFieldInput type="text" required value="main" />
             </TextField>
-            <TextField
-              class="grid grid-cols-4 items-center gap-4"
-              name="toc_path"
-            >
-              <TextFieldLabel class="text-right">
-                Path of _toc.yml
-              </TextFieldLabel>
-              <TextFieldInput
-                class="col-span-3"
-                type="text"
-                value="book/_toc.yml"
-                required
-              />
+            <TextField name="toc_path">
+              <TextFieldLabel>Path of _toc.yml</TextFieldLabel>
+              <TextFieldInput type="text" value="book/_toc.yml" required />
             </TextField>
           </div>
           <DialogFooter>
-            <Button type="submit">Add book & fetch its chapters</Button>
+            <Button type="submit">Add a book</Button>
           </DialogFooter>
         </form>
       </DialogContent>
@@ -414,7 +414,7 @@ function AddBookCard() {
 
 const App: Component = () => {
   return (
-    <div class="w-full p-2">
+    <div class="w-full p-4">
       <div>
         <h1 class="pt-8 text-3xl">Teachbook recombiner</h1>
         <p class="py-4">
@@ -446,7 +446,7 @@ const App: Component = () => {
         <div class="">
           <h2 class="text-2xl">Available teach books</h2>
           <div class="flex flex-row flex-wrap gap-2">
-            <For each={books}>{(book) => <BookCard book={book} />}</For>
+            <For each={books()}>{(book) => <BookCard book={book} />}</For>
             <AddBookCard />
           </div>
         </div>

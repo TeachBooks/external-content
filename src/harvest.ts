@@ -16,9 +16,15 @@ function makeDownloadUrl(
   // Output should be like:
   // * https://github.com/TeachBooks/manual/raw/refs/tags/v1.1.1/book/intro.md
   // * https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/raw/v0.1/book/intro.md
+  // fetch does not like redirects on github due to invalid cors in redirect response
+  // so use direct link
+  // https://raw.githubusercontent.com/TeachBooks/HOS-workbook/refs/heads/main/book/_toc.yml
+  //                https://github.com/TeachBooks/HOS-workbook/raw/refs/heads/main/book/_toc.yml
+
   if (code_url.includes("github.com")) {
     if (release === "main") {
-      return `${code_url}/raw/refs/heads/main/${path}`;
+      const u = `${code_url}/refs/heads/main/${path}`;
+      return u.replace("github.com", "raw.githubusercontent.com");
     }
     return `${code_url}/raw/refs/tags/${release}/${path}`;
   }
@@ -32,15 +38,34 @@ function makeDownloadUrl(
   throw new Error("Only GitHub and GitLab are supported");
 }
 
-async function tocFromCode(query: BookQuery): Promise<any> {
+interface TocYmlChapter {
+  caption?: string;
+  chapters?: TocYmlChapter[];
+  sections?: TocYmlChapter[];
+  title?: string;
+  file?: string;
+  url?: string;
+  glob?: string;
+}
+
+interface TocYml {
+  format: string;
+  root: string;
+  chapters?: TocYmlChapter[];
+  parts?: TocYmlChapter[];
+}
+
+async function tocFromCode(query: BookQuery): Promise<TocYml> {
   const url = makeDownloadUrl(query.code_url, query.release, query.toc_path);
   const response = await fetch(url);
   if (!response.ok) {
+    console.error(response)
     throw new Error(`Failed to fetch ${url}`);
   }
   const content = await response.text();
   // For structure of toc see https://jupyterbook.org/en/stable/structure/toc.html
   const toc = parse(content);
+  // TODO apply validator
   return toc;
 }
 
@@ -51,12 +76,13 @@ async function tocFromHtml(url: string): Promise<Array<[string, string]>> {
   }
   const html = await response.text();
   let doc: Document;
-  if (typeof DOMParser === "undefined") {
-    const { JSDOM } = await import("jsdom");
-    doc = new JSDOM(html).window.document;
-  } else {
+  const isBrowser = typeof DOMParser !== "undefined"
+  if (isBrowser) {
     const parser = new DOMParser();
     doc = parser.parseFromString(html, "text/html");
+  } else {
+    const { JSDOM } = await import("jsdom");
+    doc = new JSDOM(html).window.document;
   }
   let toc: Element | null | undefined = doc.getElementById("bd-docs-nav");
   if (!toc) {
@@ -89,6 +115,7 @@ async function configFromCode(query: BookQuery): Promise<{
     throw new Error(`Failed to fetch ${url}`);
   }
   const config = parse(await response.text());
+  // TODO pass through validator
 
   let logo: string;
   if ("logo" in config) {
@@ -176,23 +203,24 @@ function makeExternalUrl(query: BookQuery, filePath: string): string {
 
 function contentEntry(
   query: BookQuery,
-  entry: any,
+  entry: TocYmlChapter,
   tocHtml: Array<[string, string]>,
   rootHtmlUrl: string,
 ): TocEntry {
   if ("file" in entry) {
-    const [title, htmlUrl] = findTitle(entry.file, tocHtml);
+    const [title, htmlUrl] = findTitle(entry.file ?? "", tocHtml);
     return {
       title: title,
       html_url: rootHtmlUrl + htmlUrl,
-      external_url: makeExternalUrl(query, entry.file),
+      external_url: makeExternalUrl(query, entry.file ?? ""),
       children: [],
     };
   }
   if ("url" in entry && "title" in entry) {
     return {
-      title: entry.title,
-      html_url: entry.url,
+      title: entry.title ?? "",
+      html_url: entry.url ?? "",
+      external_url: null,
       children: [],
     };
   }
@@ -204,19 +232,12 @@ function contentEntry(
 
 function mergeTocs(
   query: BookQuery,
-  tocYml: any,
+  tocYml: TocYml,
   tocHtml: Array<[string, string]>,
 ): TocEntry {
   const rootPath = query.toc_path.replace("_toc.yml", tocYml.root);
   const rootFile = pathWithSuffix(tocYml.root, ".html");
   const rootHtmlUrl = query.html_url.replace(rootFile, "");
-  console.log({
-    rootHtmlUrl,
-    rootPath,
-    rootFile,
-    t: tocYml.root,
-    h: query.html_url,
-  });
   const rootCodeUrl = makeExternalUrl(query, rootPath);
 
   const toc: TocEntry = {
@@ -227,16 +248,21 @@ function mergeTocs(
   };
 
   if ("parts" in tocYml) {
-    for (const part of tocYml.parts) {
-      const partToc: TocEntry = { title: part.caption, children: [] };
+    for (const part of tocYml.parts ?? []) {
+      const partToc: TocEntry = {
+        title: part.caption || "",
+        children: [],
+        external_url: null,
+        html_url: null,
+      };
       toc.children.push(partToc);
 
-      for (const chapter of part.chapters) {
+      for (const chapter of part.chapters ?? []) {
         const chapterToc = contentEntry(query, chapter, tocHtml, rootHtmlUrl);
         partToc.children.push(chapterToc);
 
         if ("sections" in chapter) {
-          for (const section of chapter.sections) {
+          for (const section of chapter.sections ?? []) {
             try {
               const sectionToc = contentEntry(
                 query,
@@ -247,7 +273,7 @@ function mergeTocs(
               chapterToc.children.push(sectionToc);
 
               if ("sections" in section) {
-                for (const subsection of section.sections) {
+                for (const subsection of section.sections ?? []) {
                   const subsectionToc = contentEntry(
                     query,
                     subsection,
@@ -257,7 +283,7 @@ function mergeTocs(
                   sectionToc.children.push(subsectionToc);
 
                   if ("sections" in subsection) {
-                    for (const subsubsection of subsection.sections) {
+                    for (const subsubsection of subsection.sections ?? []) {
                       const subsubsectionToc = contentEntry(
                         query,
                         subsubsection,
@@ -272,7 +298,7 @@ function mergeTocs(
             } catch (error) {
               // Keep chapter as section container if section title not found
               if ("sections" in section) {
-                for (const subsection of section.sections) {
+                for (const subsection of section.sections ?? []) {
                   const subsectionToc = contentEntry(
                     query,
                     subsection,
@@ -288,12 +314,12 @@ function mergeTocs(
       }
     }
   } else {
-    for (const chapter of tocYml.chapters) {
+    for (const chapter of tocYml.chapters ?? []) {
       const chapterToc = contentEntry(query, chapter, tocHtml, rootHtmlUrl);
       toc.children.push(chapterToc);
 
       if ("sections" in chapter) {
-        for (const section of chapter.sections) {
+        for (const section of chapter.sections ?? []) {
           const sectionToc = contentEntry(query, section, tocHtml, rootHtmlUrl);
           chapterToc.children.push(sectionToc);
         }
