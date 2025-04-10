@@ -5,6 +5,7 @@ import {
   createMemo,
   createSignal,
   createUniqueId,
+  onMount,
 } from "solid-js";
 import { Button, buttonVariants } from "./components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
@@ -40,6 +41,7 @@ import {
   MdiLaunch,
   MdiMinusBoxOutline,
   MdiPlusBoxOutline,
+  MdiShareVariant,
 } from "./icons";
 import {
   type Book,
@@ -50,6 +52,7 @@ import {
   clearExternals,
   deleteBook,
   externals,
+  metaOfBook,
   toggleExternal,
 } from "./store";
 
@@ -362,6 +365,7 @@ function AddBookCard() {
         console.error(e);
         return "Failed to fetch chapters";
       },
+      duration: 1000,
     });
   }
   return (
@@ -383,6 +387,9 @@ function AddBookCard() {
           <div class="flex flex-col gap-4 py-4">
             <TextField name="html_url">
               <TextFieldLabel>Website URL</TextFieldLabel>
+              <TextFieldDescription>
+                Normally ends with intro.html
+              </TextFieldDescription>
               <TextFieldInput type="url" required />
             </TextField>
             <TextField name="code_url">
@@ -412,18 +419,61 @@ function AddBookCard() {
   );
 }
 
+const shareBooksUrl = () => {
+  const meta = books()
+    .filter((b) => b.deleteable)
+    .map(metaOfBook);
+  const searchParams = new URLSearchParams();
+  searchParams.set("books", JSON.stringify(meta));
+  return `?${searchParams.toString()}`;
+};
+
 const App: Component = () => {
+  onMount(async () => {
+    const params = new URLSearchParams(window.location.search);
+    const bookmetas = params.get("books");
+    if (bookmetas) {
+      const parsedBookmetas = JSON.parse(bookmetas);
+      for (const bookmeta of parsedBookmetas) {
+        if (
+          books().some(
+            (book) =>
+              book.code_url === bookmeta.code_url &&
+              book.release === bookmeta.release &&
+              book.toc_path === bookmeta.toc_path &&
+              book.html_url === bookmeta.html_url,
+          )
+        ) {
+          continue;
+        }
+        try {
+          const book = await harvestBook(bookmeta);
+          if (book) {
+            book.deleteable = true;
+            addBook(book);
+          }
+        } catch (error) {
+          console.error(
+            `Failed to fetch book ${bookmeta.code_url} ${bookmeta.release} ${bookmeta.toc_path} ${bookmeta.html_url}`,
+            error,
+          );
+        }
+      }
+    }
+  });
+
   return (
-    <div class="w-full p-4">
+    <div class="w-full px-4">
       <div>
-        <h1 class="pt-8 text-3xl">Teachbook recombiner</h1>
-        <p class="py-4">
+        <h1 class="py-4 text-3xl">Teachbook recombiner</h1>
+        <p>
           Select chapters from the available teach books to incorporate into
-          your own teach book.
+          your own teach book. Click <MdiPlusBoxOutline class="inline" /> to see
+          chapters in books.
         </p>
       </div>
       <div class="flex w-full flex-row gap-4">
-        <div class="max-w-xl">
+        <div class="w-1/2">
           <h2 class="py-4 text-2xl">Selected chapters</h2>
           <ul class="list-inside list-disc">
             <For each={externals()}>
@@ -444,7 +494,14 @@ const App: Component = () => {
           </Show>
         </div>
         <div class="">
-          <h2 class="text-2xl">Available teach books</h2>
+          <h2 class="pb-2 text-2xl">
+            Available teach books{" "}
+            <Show when={shareBooksUrl().length > 13}>
+              <a href={shareBooksUrl()} target="_blank" rel="noreferrer">
+                <MdiShareVariant class="inline" />
+              </a>
+            </Show>
+          </h2>
           <div class="flex flex-row flex-wrap gap-2">
             <For each={books()}>{(book) => <BookCard book={book} />}</For>
             <AddBookCard />

@@ -8,19 +8,34 @@ export interface TocEntry {
   children: TocEntry[];
 }
 
-export interface Book {
-  title: string;
-  logo: string;
-  author: string;
+export interface BookMeta {
   html_url: string;
   code_url: string;
   release: string;
   toc_path: string;
+}
+
+export interface Book extends BookMeta {
+  title: string;
+  logo: string;
+  author: string;
   toc: TocEntry;
   deleteable?: boolean;
 }
 
-export const [books, setBooks] = createSignal(rawCatalog as unknown as Book[]);
+export function metaOfBook(book: Book): BookMeta {
+  return {
+    html_url: book.html_url,
+    code_url: book.code_url,
+    release: book.release,
+    toc_path: book.toc_path,
+  };
+}
+
+export const [books, setBooks] = createSignal<Book[]>(
+  // []
+  rawCatalog as unknown as Book[],
+);
 
 export function deleteBook(book: Book) {
   setBooks(books().filter((b) => b !== book));

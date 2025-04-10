@@ -1,6 +1,6 @@
+import { isServer } from "solid-js/web";
 import { parse } from "yaml";
 import type { Book, TocEntry } from "./store";
-import { isServer } from "solid-js/web";
 
 export interface BookQuery {
   html_url: string;
@@ -27,7 +27,10 @@ function makeDownloadUrl(
       const u = `${code_url}/refs/heads/main/${path}`;
       return u.replace("github.com", "raw.githubusercontent.com");
     }
-    return `${code_url}/raw/refs/tags/${release}/${path}`;
+    return `${code_url}/refs/tags/${release}/${path}`.replace(
+      "github.com",
+      "raw.githubusercontent.com",
+    );
   }
   if (code_url.includes("gitlab")) {
     if (code_url.split("/").length > 4) {
@@ -60,7 +63,7 @@ async function tocFromCode(query: BookQuery): Promise<TocYml> {
   const url = makeDownloadUrl(query.code_url, query.release, query.toc_path);
   const response = await fetch(url);
   if (!response.ok) {
-    console.error(response)
+    console.error(response);
     throw new Error(`Failed to fetch ${url}`);
   }
   const content = await response.text();
