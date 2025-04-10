@@ -45,6 +45,7 @@ import {
 } from "./icons";
 import {
   type Book,
+  type BookMeta,
   type TocEntry,
   addBook,
   books,
@@ -53,6 +54,7 @@ import {
   deleteBook,
   externals,
   metaOfBook,
+  setBooks,
   toggleExternal,
 } from "./store";
 
@@ -434,31 +436,30 @@ const App: Component = () => {
     const bookmetas = params.get("books");
     if (bookmetas) {
       const parsedBookmetas = JSON.parse(bookmetas);
-      for (const bookmeta of parsedBookmetas) {
-        if (
-          books().some(
-            (book) =>
-              book.code_url === bookmeta.code_url &&
-              book.release === bookmeta.release &&
-              book.toc_path === bookmeta.toc_path &&
-              book.html_url === bookmeta.html_url,
-          )
-        ) {
-          continue;
-        }
-        try {
-          const book = await harvestBook(bookmeta);
-          if (book) {
-            book.deleteable = true;
-            addBook(book);
-          }
-        } catch (error) {
-          console.error(
-            `Failed to fetch book ${bookmeta.code_url} ${bookmeta.release} ${bookmeta.toc_path} ${bookmeta.html_url}`,
-            error,
-          );
-        }
-      }
+      showToastPromise(fetchChapters(parsedBookmetas), {
+        loading: "Fetching chapters of books",
+        success: () => "Books added",
+        error: (e: unknown) => {
+          console.error(e);
+          return "Failed to fetch chapters";
+        },
+        duration: 1000,
+      });
+    }
+    const bookmetasUrl = params.get("books_url");
+    if (bookmetasUrl) {
+      const response = await fetch(bookmetasUrl);
+      const parsedBookmetas = await response.json();
+      setBooks([]);
+      showToastPromise(fetchChapters(parsedBookmetas), {
+        loading: "Fetching chapters of books",
+        success: () => "Books added",
+        error: (e: unknown) => {
+          console.error(e);
+          return "Failed to fetch chapters";
+        },
+        duration: 1000,
+      });
     }
   });
 
@@ -512,5 +513,33 @@ const App: Component = () => {
     </div>
   );
 };
+
+async function fetchChapters(parsedBookmetas: BookMeta[]) {
+  for (const bookmeta of parsedBookmetas) {
+    if (
+      books().some(
+        (book) =>
+          book.code_url === bookmeta.code_url &&
+          book.release === bookmeta.release &&
+          book.toc_path === bookmeta.toc_path &&
+          book.html_url === bookmeta.html_url,
+      )
+    ) {
+      continue;
+    }
+    try {
+      const book = await harvestBook(bookmeta);
+      if (book) {
+        book.deleteable = true;
+        addBook(book);
+      }
+    } catch (error) {
+      console.error(
+        `Failed to fetch book ${bookmeta.code_url} ${bookmeta.release} ${bookmeta.toc_path} ${bookmeta.html_url}`,
+        error,
+      );
+    }
+  }
+}
 
 export default App;
