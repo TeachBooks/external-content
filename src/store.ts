@@ -17,9 +17,18 @@ export interface Book {
   release: string;
   toc_path: string;
   toc: TocEntry;
+  deleteable?: boolean;
 }
 
-export const books = rawCatalog as Book[];
+export const [books, setBooks] = createSignal(rawCatalog as unknown as Book[]);
+
+export function deleteBook(book: Book) {
+  setBooks(books().filter((b) => b !== book));
+}
+
+export function addBook(book: Book) {
+  setBooks([...books(), book]);
+}
 
 interface SelectedExternal {
   book: Book;
