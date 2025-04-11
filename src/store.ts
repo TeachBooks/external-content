@@ -1,5 +1,5 @@
-import { createSignal } from "solid-js";
-import rawCatalog from "../chapters.json";
+import { createResource, createSignal } from "solid-js";
+import { isServer } from "solid-js/web";
 
 export interface TocEntry {
   title: string;
@@ -32,9 +32,26 @@ export function metaOfBook(book: Book): BookMeta {
   };
 }
 
-export const [books, setBooks] = createSignal<Book[]>(
-  // []
-  rawCatalog as unknown as Book[],
+async function fetchChapters(source: string): Promise<Book[]> {
+  const response = await fetch(source);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch chapters: ${response.statusText}`);
+  }
+  return await response.json();
+}
+
+let source = '/chapters.json'
+if (!isServer) {
+  const params = new URLSearchParams(window.location.search);
+  const sourceParam = params.get('chapters');
+  if (sourceParam) {
+    source = sourceParam;
+  }
+} 
+
+export const [books, {mutate: setBooks}] = createResource<Book[]>(
+  () => source,
+  fetchChapters
 );
 
 export function deleteBook(book: Book) {

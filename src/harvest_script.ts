@@ -3,7 +3,7 @@ import { parse } from "yaml";
 import { type BookQuery, harvestBook } from "./harvest.ts";
 import type { Book } from "./store.ts";
 
-async function main(books_file = "books.yml", chapters_file = "chapters.json") {
+async function main(books_file = "books.yml", chapters_file = "public/chapters.json") {
   const queries = parse(await readFile(books_file, "utf-8")) as BookQuery[];
   const books: Book[] = [];
   for (const query of queries) {
