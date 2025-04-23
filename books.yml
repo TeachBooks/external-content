@@ -1,8 +1,9 @@
-# Item in private repo, TODO add auth token when fetching from private gitlab
-# - html_url: https://teachbooks.tudelft.nl/engineering-hydrology
-#   code_url: https://gitlab.tudelft.nl/interactivetextbooks-citg/engineering-hydrology
-#   release: v1.0.0
-#   toc_path: book/_toc.yml
+# This file contains the list of books that will be displayed on the website.
+# Each book is represented by a dictionary with the following keys:
+# - html_url: URL to the book's HTML version.
+# - code_url: URL to the book's source code.
+# - release: Release version of the book. Can be tag, branch or commit hash.
+# - toc_path: Path to the book's table of contents file.
 - html_url: https://teachbooks.io/manual/intro.html
   code_url: https://github.com/TeachBooks/manual
   release: v1.1.1
@@ -19,3 +20,8 @@
   code_url: https://github.com/TUDelft-books/Sympy-Mechanics
   toc_path: book/_toc.yml
   release: main
+# Item in private repo, TODO add auth token when fetching from private gitlab
+# - html_url: https://teachbooks.tudelft.nl/engineering-hydrology
+#   code_url: https://gitlab.tudelft.nl/interactivetextbooks-citg/engineering-hydrology
+#   release: v1.0.0
+#   toc_path: book/_toc.yml
