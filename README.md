@@ -7,7 +7,7 @@ the new `external` table of content entry type, see the [teachbook package](http
 
 ## Usage
 
-You can visit the webapp at [teachbooks.io/recombiner/](teachbooks.io/recombiner/). This has uses the default list of [books](books.yml) from which you can select chapters.
+You can visit the webapp at [teachbooks.io/recombiner/](http://teachbooks.io/recombiner/). This has uses the default list of [books](books.yml) from which you can select chapters.
 You can select the chapters you want to add you your own book, and either get instructions to follow yourself, or mail them to someone (e.g. the TA responsible).
 
 By clicking on "Add a book" you can add a book that was not in the default list.
