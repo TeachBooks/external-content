@@ -7,7 +7,7 @@ the new `external` table of content entry type, see the [teachbook package](http
 
 ## Usage
 
-You can visit the webapp at [teachbooks.io/external-content/](teachbooks.io/external-content/). This has uses the default list of [books](books.yml) from which you can select chapters.
+You can visit the webapp at [teachbooks.io/recombiner/](teachbooks.io/recombiner/). This has uses the default list of [books](books.yml) from which you can select chapters.
 You can select the chapters you want to add you your own book, and either get instructions to follow yourself, or mail them to someone (e.g. the TA responsible).
 
 By clicking on "Add a book" you can add a book that was not in the default list.
@@ -40,7 +40,7 @@ If you want to show other books the then ones specified in the `./books.yml` fil
 catalog file with the following steps
 1. Create a books.yml file
 2. Host it on the Internet and make sure that [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) is enabled.
-3. Open app with `http://teachbooks.io/external-content/?books_url=<your_url>`. Where `<your_url>` is the URL of your books.yml file.
+3. Open app with `http://teachbooks.io/recombiner/?books_url=<your_url>`. Where `<your_url>` is the URL of your books.yml file.
 
 ### Sharing user defined books
 
