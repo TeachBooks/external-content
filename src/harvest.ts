@@ -101,20 +101,7 @@ async function downloadTocAndConfigUsingGitlabApi(
   );
   const config = parse(configContent);
 
-  let logo: string;
-  if ("logo" in config) {
-    const relLogo = query.toc_path.replace("_toc.yml", config.logo);
-    logo = makeDownloadUrl(query.code_url, query.release, relLogo);
-  } else {
-    const relLogo = config.sphinx.config.html_theme_options.logo.image_light;
-    const staticPath = config.sphinx.config.html_static_path[0];
-    const absStaticPath = query.toc_path.replace("_toc.yml", staticPath);
-    logo = makeDownloadUrl(
-      query.code_url,
-      query.release,
-      `${absStaticPath}/${relLogo}`,
-    );
-  }
+  const logo = deriveLogo(config, query);
   const configObj = {
     title: config.title,
     logo: logo,
@@ -185,6 +172,17 @@ async function configFromCode(query: BookQuery): Promise<{
   const config = parse(await response.text());
   // TODO pass through validator
 
+  const logo = deriveLogo(config, query);
+
+  return {
+    title: config.title,
+    logo,
+    author: config.author,
+  };
+}
+
+// biome-ignore lint/suspicious/noExplicitAny: has TODO
+function deriveLogo(config: any, query: BookQuery) {
   let logo: string;
   if ("logo" in config) {
     const relLogo = query.toc_path.replace("_toc.yml", config.logo);
@@ -199,25 +197,7 @@ async function configFromCode(query: BookQuery): Promise<{
       `${absStaticPath}/${relLogo}`,
     );
   }
-
-  return {
-    title: config.title,
-    logo: logo,
-    author: config.author,
-  };
-}
-
-function pathToName(path: string): string {
-  // Given foo/bar/baz.md, return baz
-  // Given foo/bar/nb.ipynb, return nb
-  // Given foo/bar.baz.md return bar.baz
-  const last = path.split("/").pop();
-  if (!last) {
-    throw new Error("Empty path");
-  }
-  const names = last.split(".");
-  names.pop();
-  return names.join(".");
+  return logo;
 }
 
 function pathWithSuffix(path: string, suffix: string) {
@@ -343,24 +323,32 @@ function mergeTocs(
 
                 if ("sections" in section) {
                   for (const subsection of section.sections ?? []) {
-                    const subsectionToc = contentEntry(
-                      query,
-                      subsection,
-                      tocHtml,
-                      rootHtmlUrl,
-                    );
-                    sectionToc.children.push(subsectionToc);
+                    try {
+                      const subsectionToc = contentEntry(
+                        query,
+                        subsection,
+                        tocHtml,
+                        rootHtmlUrl,
+                      );
+                      sectionToc.children.push(subsectionToc);
 
-                    if ("sections" in subsection) {
-                      for (const subsubsection of subsection.sections ?? []) {
-                        const subsubsectionToc = contentEntry(
-                          query,
-                          subsubsection,
-                          tocHtml,
-                          rootHtmlUrl,
-                        );
-                        subsectionToc.children.push(subsubsectionToc);
+                      if ("sections" in subsection) {
+                        for (const subsubsection of subsection.sections ?? []) {
+                          try {
+                            const subsubsectionToc = contentEntry(
+                              query,
+                              subsubsection,
+                              tocHtml,
+                              rootHtmlUrl,
+                            );
+                            subsectionToc.children.push(subsubsectionToc);
+                          } catch (error) {
+                            ignoreTitleNotFoundError(error);
+                          }
+                        }
                       }
+                    } catch (error) {
+                      ignoreTitleNotFoundError(error);
                     }
                   }
                 }
@@ -368,42 +356,63 @@ function mergeTocs(
                 // Keep chapter as section container if section title not found
                 if ("sections" in section) {
                   for (const subsection of section.sections ?? []) {
-                    const subsectionToc = contentEntry(
-                      query,
-                      subsection,
-                      tocHtml,
-                      rootHtmlUrl,
-                    );
-                    chapterToc.children.push(subsectionToc);
+                    try {
+                      const subsectionToc = contentEntry(
+                        query,
+                        subsection,
+                        tocHtml,
+                        rootHtmlUrl,
+                      );
+                      chapterToc.children.push(subsectionToc);
+                    } catch (error) {
+                      ignoreTitleNotFoundError(error);
+                    }
                   }
                 }
               }
             }
           }
         } catch (error) {
-          if (String(error).includes("Title not found")) {
-            // skipit
-          } else {
-            throw error;
-          }
+          ignoreTitleNotFoundError(error);
         }
       }
     }
   } else {
     for (const chapter of tocYml.chapters ?? []) {
-      const chapterToc = contentEntry(query, chapter, tocHtml, rootHtmlUrl);
-      toc.children.push(chapterToc);
+      try {
+        const chapterToc = contentEntry(query, chapter, tocHtml, rootHtmlUrl);
+        toc.children.push(chapterToc);
 
-      if ("sections" in chapter) {
-        for (const section of chapter.sections ?? []) {
-          const sectionToc = contentEntry(query, section, tocHtml, rootHtmlUrl);
-          chapterToc.children.push(sectionToc);
+        if ("sections" in chapter) {
+          for (const section of chapter.sections ?? []) {
+            try {
+              const sectionToc = contentEntry(
+                query,
+                section,
+                tocHtml,
+                rootHtmlUrl,
+              );
+              chapterToc.children.push(sectionToc);
+            } catch (error) {
+              ignoreTitleNotFoundError(error);
+            }
+          }
         }
+      } catch (error) {
+        ignoreTitleNotFoundError(error);
       }
     }
   }
 
   return toc;
+}
+
+function ignoreTitleNotFoundError(error: unknown) {
+  if (String(error).includes("Title not found")) {
+    // skipit
+  } else {
+    throw error;
+  }
 }
 
 export async function harvestBook(query: BookQuery): Promise<Book> {
