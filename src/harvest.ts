@@ -73,6 +73,58 @@ async function tocFromCode(query: BookQuery): Promise<TocYml> {
   return toc;
 }
 
+async function downloadTocAndConfigUsingGitlabApi(
+  query: BookQuery,
+): Promise<[TocYml, { title: string; logo: string; author: string }]> {
+  const projectrepo = new URL(query.code_url).pathname.slice(1);
+
+  const projectUrl = `https://gitlab.tudelft.nl/api/v4/projects/${encodeURIComponent(projectrepo)}`;
+  const projectResponse = await fetch(projectUrl);
+  if (!projectResponse.ok) {
+    throw new Error(`Failed to fetch ${projectUrl}`);
+  }
+  const projectData = await projectResponse.json();
+  const projectId = projectData.id;
+
+  const tocContent = await fetchFileFromGitlabApi(
+    projectId,
+    query.toc_path,
+    query,
+  );
+  const toc = parse(tocContent);
+
+  const configPath = query.toc_path.replace("_toc.yml", "_config.yml");
+  const configContent = await fetchFileFromGitlabApi(
+    projectId,
+    configPath,
+    query,
+  );
+  const config = parse(configContent);
+
+  const logo = deriveLogo(config, query);
+  const configObj = {
+    title: config.title,
+    logo: logo,
+    author: config.author,
+  };
+  return [toc, configObj];
+}
+
+async function fetchFileFromGitlabApi(
+  projectId: string,
+  fn: string,
+  query: BookQuery,
+) {
+  const tocUrl = `https://gitlab.tudelft.nl/api/v4/projects/${projectId}/repository/files/${encodeURIComponent(fn)}?ref=${query.release}`;
+  const tocResponse = await fetch(tocUrl);
+  if (!tocResponse.ok) {
+    throw new Error(`Failed to fetch ${tocUrl}`);
+  }
+  const tocData = await tocResponse.json();
+  const tocContent = atob(tocData.content);
+  return tocContent;
+}
+
 async function tocFromHtml(url: string): Promise<Array<[string, string]>> {
   const response = await fetch(url);
   if (!response.ok) {
@@ -120,6 +172,17 @@ async function configFromCode(query: BookQuery): Promise<{
   const config = parse(await response.text());
   // TODO pass through validator
 
+  const logo = deriveLogo(config, query);
+
+  return {
+    title: config.title,
+    logo,
+    author: config.author,
+  };
+}
+
+// biome-ignore lint/suspicious/noExplicitAny: has TODO
+function deriveLogo(config: any, query: BookQuery) {
   let logo: string;
   if ("logo" in config) {
     const relLogo = query.toc_path.replace("_toc.yml", config.logo);
@@ -134,25 +197,7 @@ async function configFromCode(query: BookQuery): Promise<{
       `${absStaticPath}/${relLogo}`,
     );
   }
-
-  return {
-    title: config.title,
-    logo: logo,
-    author: config.author,
-  };
-}
-
-function pathToName(path: string): string {
-  // Given foo/bar/baz.md, return baz
-  // Given foo/bar/nb.ipynb, return nb
-  // Given foo/bar.baz.md return bar.baz
-  const last = path.split("/").pop();
-  if (!last) {
-    throw new Error("Empty path");
-  }
-  const names = last.split(".");
-  names.pop();
-  return names.join(".");
+  return logo;
 }
 
 function pathWithSuffix(path: string, suffix: string) {
@@ -261,8 +306,82 @@ function mergeTocs(
       toc.children.push(partToc);
 
       for (const chapter of part.chapters ?? []) {
+        try {
+          const chapterToc = contentEntry(query, chapter, tocHtml, rootHtmlUrl);
+          partToc.children.push(chapterToc);
+
+          if ("sections" in chapter) {
+            for (const section of chapter.sections ?? []) {
+              try {
+                const sectionToc = contentEntry(
+                  query,
+                  section,
+                  tocHtml,
+                  rootHtmlUrl,
+                );
+                chapterToc.children.push(sectionToc);
+
+                if ("sections" in section) {
+                  for (const subsection of section.sections ?? []) {
+                    try {
+                      const subsectionToc = contentEntry(
+                        query,
+                        subsection,
+                        tocHtml,
+                        rootHtmlUrl,
+                      );
+                      sectionToc.children.push(subsectionToc);
+
+                      if ("sections" in subsection) {
+                        for (const subsubsection of subsection.sections ?? []) {
+                          try {
+                            const subsubsectionToc = contentEntry(
+                              query,
+                              subsubsection,
+                              tocHtml,
+                              rootHtmlUrl,
+                            );
+                            subsectionToc.children.push(subsubsectionToc);
+                          } catch (error) {
+                            ignoreTitleNotFoundError(error);
+                          }
+                        }
+                      }
+                    } catch (error) {
+                      ignoreTitleNotFoundError(error);
+                    }
+                  }
+                }
+              } catch (error) {
+                // Keep chapter as section container if section title not found
+                if ("sections" in section) {
+                  for (const subsection of section.sections ?? []) {
+                    try {
+                      const subsectionToc = contentEntry(
+                        query,
+                        subsection,
+                        tocHtml,
+                        rootHtmlUrl,
+                      );
+                      chapterToc.children.push(subsectionToc);
+                    } catch (error) {
+                      ignoreTitleNotFoundError(error);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        } catch (error) {
+          ignoreTitleNotFoundError(error);
+        }
+      }
+    }
+  } else {
+    for (const chapter of tocYml.chapters ?? []) {
+      try {
         const chapterToc = contentEntry(query, chapter, tocHtml, rootHtmlUrl);
-        partToc.children.push(chapterToc);
+        toc.children.push(chapterToc);
 
         if ("sections" in chapter) {
           for (const section of chapter.sections ?? []) {
@@ -274,58 +393,13 @@ function mergeTocs(
                 rootHtmlUrl,
               );
               chapterToc.children.push(sectionToc);
-
-              if ("sections" in section) {
-                for (const subsection of section.sections ?? []) {
-                  const subsectionToc = contentEntry(
-                    query,
-                    subsection,
-                    tocHtml,
-                    rootHtmlUrl,
-                  );
-                  sectionToc.children.push(subsectionToc);
-
-                  if ("sections" in subsection) {
-                    for (const subsubsection of subsection.sections ?? []) {
-                      const subsubsectionToc = contentEntry(
-                        query,
-                        subsubsection,
-                        tocHtml,
-                        rootHtmlUrl,
-                      );
-                      subsectionToc.children.push(subsubsectionToc);
-                    }
-                  }
-                }
-              }
             } catch (error) {
-              // Keep chapter as section container if section title not found
-              if ("sections" in section) {
-                for (const subsection of section.sections ?? []) {
-                  const subsectionToc = contentEntry(
-                    query,
-                    subsection,
-                    tocHtml,
-                    rootHtmlUrl,
-                  );
-                  chapterToc.children.push(subsectionToc);
-                }
-              }
+              ignoreTitleNotFoundError(error);
             }
           }
         }
-      }
-    }
-  } else {
-    for (const chapter of tocYml.chapters ?? []) {
-      const chapterToc = contentEntry(query, chapter, tocHtml, rootHtmlUrl);
-      toc.children.push(chapterToc);
-
-      if ("sections" in chapter) {
-        for (const section of chapter.sections ?? []) {
-          const sectionToc = contentEntry(query, section, tocHtml, rootHtmlUrl);
-          chapterToc.children.push(sectionToc);
-        }
+      } catch (error) {
+        ignoreTitleNotFoundError(error);
       }
     }
   }
@@ -333,10 +407,33 @@ function mergeTocs(
   return toc;
 }
 
+function ignoreTitleNotFoundError(error: unknown) {
+  if (String(error).includes("Title not found")) {
+    // skipit
+  } else {
+    throw error;
+  }
+}
+
 export async function harvestBook(query: BookQuery): Promise<Book> {
-  const tocYml = await tocFromCode(query);
+  let tocYml: TocYml;
+  let config: { title: string; logo: string; author: string };
+  try {
+    tocYml = await tocFromCode(query);
+    config = await configFromCode(query);
+  } catch (error) {
+    if (error instanceof TypeError) {
+      if (query.code_url.includes("gitlab")) {
+        [tocYml, config] = await downloadTocAndConfigUsingGitlabApi(query);
+      } else {
+        throw error;
+      }
+    } else {
+      throw error;
+    }
+  }
+
   const tocHtml = await tocFromHtml(query.html_url);
-  const config = await configFromCode(query);
   const toc = mergeTocs(query, tocYml, tocHtml);
   if (config.title === "Template" && query.code_url) {
     // biome-ignore lint/style/noNonNullAssertion: tested in if above
