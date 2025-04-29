@@ -368,7 +368,7 @@ function AddBookCard() {
         console.error(e);
         return "Failed to fetch chapters";
       },
-      duration: 1000,
+      duration: 5000,  // Default
     });
   }
   return (
