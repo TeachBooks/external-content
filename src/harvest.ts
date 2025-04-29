@@ -1,3 +1,5 @@
+import axios from "axios";
+import * as cheerio from "cheerio";
 import { isServer } from "solid-js/web";
 import { parse } from "yaml";
 import type { Book, TocEntry } from "./store";
@@ -9,11 +11,11 @@ export interface BookQuery {
   toc_path: string;
 }
 
-function makeDownloadUrl(
+async function makeDownloadUrl(
   code_url: string,
   release: string,
   path: string,
-): string {
+): Promise<string> {
   // Output should be like:
   // * https://github.com/TeachBooks/manual/raw/refs/tags/v1.1.1/book/intro.md
   // * https://gitlab.tudelft.nl/interactivetextbooks-citg/risk-and-reliability/-/raw/v0.1/book/intro.md
@@ -23,14 +25,21 @@ function makeDownloadUrl(
   //                https://github.com/TeachBooks/HOS-workbook/raw/refs/heads/main/book/_toc.yml
 
   if (code_url.includes("github.com")) {
-    if (release === "main") {
-      const u = `${code_url}/refs/heads/main/${path}`;
-      return u.replace("github.com", "raw.githubusercontent.com");
-    }
-    return `${code_url}/refs/tags/${release}/${path}`.replace(
+    // Assume `release` is a tag first. Try fetch, if this fails: assume it's a branch
+    const toc_path_tag = `${code_url}/refs/tags/${release}/${path}`.replace(
       "github.com",
       "raw.githubusercontent.com",
     );
+    const response = await fetch(toc_path_tag);
+    if (response.status === 404) {
+      const u = `${code_url}/refs/heads/${release}/${path}`;
+      const toc_path_branch = u.replace(
+        "github.com",
+        "raw.githubusercontent.com",
+      );
+      return toc_path_branch;
+    }
+    return toc_path_tag;
   }
   if (code_url.includes("gitlab")) {
     if (code_url.split("/").length > 4) {
@@ -60,7 +69,11 @@ interface TocYml {
 }
 
 async function tocFromCode(query: BookQuery): Promise<TocYml> {
-  const url = makeDownloadUrl(query.code_url, query.release, query.toc_path);
+  const url = await makeDownloadUrl(
+    query.code_url,
+    query.release,
+    query.toc_path,
+  );
   const response = await fetch(url);
   if (!response.ok) {
     console.error(response);
@@ -164,7 +177,7 @@ async function configFromCode(query: BookQuery): Promise<{
   author: string;
 }> {
   const configPath = query.toc_path.replace("_toc.yml", "_config.yml");
-  const url = makeDownloadUrl(query.code_url, query.release, configPath);
+  const url = await makeDownloadUrl(query.code_url, query.release, configPath);
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Failed to fetch ${url}`);
@@ -172,7 +185,7 @@ async function configFromCode(query: BookQuery): Promise<{
   const config = parse(await response.text());
   // TODO pass through validator
 
-  const logo = deriveLogo(config, query);
+  const logo = await deriveLogo(config, query);
 
   return {
     title: config.title,
@@ -181,21 +194,45 @@ async function configFromCode(query: BookQuery): Promise<{
   };
 }
 
+async function extractLogoImageSrc(url: string): Promise<string> {
+  try {
+    const { data: html } = await axios.get(url);
+    const $ = cheerio.load(html);
+    const logoAnchor = $("a.navbar-brand.logo");
+    const logoImg = logoAnchor.find("img").first();
+    const src = logoImg.attr("src");
+
+    if (src) {
+      // Resolve relative URLs
+      const absoluteUrl = new URL(src, url).href;
+      return absoluteUrl;
+    }
+
+    return "undefined";
+  } catch (error) {
+    console.error("Failed to fetch or parse the page:", error);
+    return "undefined";
+  }
+}
+
 // biome-ignore lint/suspicious/noExplicitAny: has TODO
-function deriveLogo(config: any, query: BookQuery) {
+async function deriveLogo(config: any, query: BookQuery): Promise<string> {
   let logo: string;
   if ("logo" in config) {
     const relLogo = query.toc_path.replace("_toc.yml", config.logo);
-    logo = makeDownloadUrl(query.code_url, query.release, relLogo);
+    logo = await makeDownloadUrl(query.code_url, query.release, relLogo);
   } else {
     const relLogo = config.sphinx.config.html_theme_options.logo.image_light;
     const staticPath = config.sphinx.config.html_static_path[0];
     const absStaticPath = query.toc_path.replace("_toc.yml", staticPath);
-    logo = makeDownloadUrl(
+    logo = await makeDownloadUrl(
       query.code_url,
       query.release,
       `${absStaticPath}/${relLogo}`,
     );
+  }
+  if (logo.endsWith("undefined")) {
+    logo = await extractLogoImageSrc(query.html_url);
   }
   return logo;
 }
