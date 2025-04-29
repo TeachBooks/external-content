@@ -1,3 +1,5 @@
+import axios from "axios";
+import * as cheerio from "cheerio";
 import { isServer } from "solid-js/web";
 import { parse } from "yaml";
 import type { Book, TocEntry } from "./store";
@@ -183,7 +185,7 @@ async function configFromCode(query: BookQuery): Promise<{
   const config = parse(await response.text());
   // TODO pass through validator
 
-  const logo = deriveLogo(config, query);
+  const logo = await deriveLogo(config, query);
 
   return {
     title: config.title,
@@ -192,8 +194,29 @@ async function configFromCode(query: BookQuery): Promise<{
   };
 }
 
+async function extractLogoImageSrc(url: string): Promise<string> {
+  try {
+    const { data: html } = await axios.get(url);
+    const $ = cheerio.load(html);
+    const logoAnchor = $("a.navbar-brand.logo");
+    const logoImg = logoAnchor.find("img").first();
+    const src = logoImg.attr("src");
+
+    if (src) {
+      // Resolve relative URLs
+      const absoluteUrl = new URL(src, url).href;
+      return absoluteUrl;
+    }
+
+    return "undefined";
+  } catch (error) {
+    console.error("Failed to fetch or parse the page:", error);
+    return "undefined";
+  }
+}
+
 // biome-ignore lint/suspicious/noExplicitAny: has TODO
-async function deriveLogo(config: any, query: BookQuery) {
+async function deriveLogo(config: any, query: BookQuery): Promise<string> {
   let logo: string;
   if ("logo" in config) {
     const relLogo = query.toc_path.replace("_toc.yml", config.logo);
@@ -207,6 +230,9 @@ async function deriveLogo(config: any, query: BookQuery) {
       query.release,
       `${absStaticPath}/${relLogo}`,
     );
+  }
+  if (logo.endsWith("undefined")) {
+    logo = await extractLogoImageSrc(query.html_url);
   }
   return logo;
 }
