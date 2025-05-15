@@ -31,7 +31,7 @@ async function makeDownloadUrl(
       "raw.githubusercontent.com",
     );
     const response = await fetch(toc_path_tag);
-    if (!response.ok) {
+    if (response.status === 404 || !response.ok) {
       const u = `${code_url}/refs/heads/${release}/${path}`;
       const toc_path_branch = u.replace(
         "github.com",
