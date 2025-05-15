@@ -31,7 +31,7 @@ async function makeDownloadUrl(
       "raw.githubusercontent.com",
     );
     const response = await fetch(toc_path_tag);
-    if (response.status === 404 || !response.ok) {
+    if (!response.ok) {
       const u = `${code_url}/refs/heads/${release}/${path}`;
       const toc_path_branch = u.replace(
         "github.com",
@@ -221,7 +221,7 @@ async function deriveLogo(config: any, query: BookQuery): Promise<string> {
   if ("logo" in config) {
     const relLogo = query.toc_path.replace("_toc.yml", config.logo);
     logo = await makeDownloadUrl(query.code_url, query.release, relLogo);
-  } else {
+  } else if ("html_static_path" in config.sphinx.config) {
     const relLogo = config.sphinx.config.html_theme_options.logo.image_light;
     const staticPath = config.sphinx.config.html_static_path[0];
     const absStaticPath = query.toc_path.replace("_toc.yml", staticPath);
@@ -230,6 +230,9 @@ async function deriveLogo(config: any, query: BookQuery): Promise<string> {
       query.release,
       `${absStaticPath}/${relLogo}`,
     );
+  }
+  else {
+    logo = "undefined"
   }
   if (logo.endsWith("undefined")) {
     logo = await extractLogoImageSrc(query.html_url);
